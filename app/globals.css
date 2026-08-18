@@ -75,3 +75,37 @@ line-height:var(--pf-leading-heading);color:var(--tx)}
 text-transform:uppercase;letter-spacing:var(--pf-tracking-label)}
 .erro{color:var(--bad);font-size:var(--pf-type-body-sm);margin-top:10px}
 .vazio{color:var(--dim);font-size:var(--pf-type-body-sm);padding:18px 0}
+
+/* ------------------------------------------------------------------ store */
+.busca{display:flex;gap:10px;margin-bottom:16px}
+.busca input{flex:1}
+.filtros{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px}
+.filtros a{text-decoration:none}
+.prateleira{margin-bottom:36px}
+.prateleira-cabeca{display:flex;align-items:baseline;gap:12px;
+border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:16px}
+.prateleira-cabeca h2{font-family:var(--pf-font-display);font-size:var(--pf-type-h3);
+line-height:1;letter-spacing:var(--pf-tracking-display-tight);
+text-transform:uppercase;margin:0}
+.prateleira-cabeca span{color:var(--dim);font-size:var(--pf-type-caption)}
+.grelha{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.item{display:block;background:var(--card);border:1px solid var(--line);
+border-radius:4px;padding:16px;color:var(--tx);text-decoration:none}
+.item:hover{border-color:var(--acc)}
+.item-topo{display:flex;justify-content:space-between;align-items:center;
+gap:8px;margin-bottom:10px}
+.item-id{color:var(--dim);font-size:var(--pf-type-label)}
+.item b{display:block;margin-bottom:4px}
+.item p{color:var(--dim);font-size:var(--pf-type-caption);margin:0 0 10px}
+.item .hash{color:var(--steel,#6b6259);font-size:var(--pf-type-label)}
+
+.migalha{color:var(--dim);font-size:var(--pf-type-caption);margin:0 0 10px}
+.sec{font-family:var(--pf-font-display);font-size:var(--pf-type-h3);
+text-transform:uppercase;letter-spacing:var(--pf-tracking-display-tight);
+line-height:1;margin:30px 0 12px}
+.evidencia .linha{display:flex;gap:16px;padding:9px 0;border-top:1px solid var(--line)}
+.evidencia .linha:first-child{border-top:0}
+.evidencia .linha span{flex:0 0 168px;color:var(--dim);
+font-size:var(--pf-type-label);text-transform:uppercase;
+letter-spacing:var(--pf-tracking-label);padding-top:2px}
+.evidencia .linha b{font-weight:400;word-break:break-all}

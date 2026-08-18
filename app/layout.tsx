@@ -18,6 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <nav>
             <a href="/">Identidades</a>
             <a href="/chaves">Chaves</a>
+            <a href="/store">Store</a>
             <a href="/clientes">Clientes OAuth</a>
           </nav>
         </header>
