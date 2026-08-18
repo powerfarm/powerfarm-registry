@@ -1,0 +1,45 @@
+:root {
+  --powerfarm-black: #080702;
+  --powerfarm-cream: #F8DFC1;
+  --powerfarm-energy-amber: #FFB02E;
+  --powerfarm-graphite: #1A1A1A;
+  --powerfarm-steel: #4D4D4D;
+  --powerfarm-white: #FFFFFF;
+}
+:root {
+  --pf-font-display: "Anton", "Arial Narrow", Impact, sans-serif;
+  --pf-font-text: "Inter", Arial, Helvetica, sans-serif;
+  --pf-type-display-2xl: 96px;
+  --pf-type-display-xl: 72px;
+  --pf-type-display-lg: 56px;
+  --pf-type-h1: 40px;
+  --pf-type-h2: 32px;
+  --pf-type-h3: 24px;
+  --pf-type-body-lg: 18px;
+  --pf-type-body: 16px;
+  --pf-type-body-sm: 14px;
+  --pf-type-caption: 12px;
+  --pf-type-label: 11px;
+  --pf-leading-display: .92;
+  --pf-leading-heading: 1;
+  --pf-leading-body: 1.5;
+  --pf-leading-caption: 1.35;
+  --pf-tracking-display-tight: -.02em;
+  --pf-tracking-label: .08em;
+}
+.pf-display {
+  font-family: var(--pf-font-display);
+  line-height: var(--pf-leading-display);
+  letter-spacing: var(--pf-tracking-display-tight);
+  text-transform: uppercase;
+}
+.pf-body, .pf-heading, .pf-caption, .pf-label {
+  font-family: var(--pf-font-text);
+}
+.pf-body { line-height: var(--pf-leading-body); }
+.pf-label {
+  font-size: var(--pf-type-label);
+  font-weight: 600;
+  letter-spacing: var(--pf-tracking-label);
+  text-transform: uppercase;
+}

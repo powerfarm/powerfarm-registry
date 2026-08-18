@@ -32,5 +32,8 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+  // Ficheiros estaticos ficam de fora: o wordmark da marca e servido a partir de
+  // /public, e sem esta excecao o middleware mandava-o para /login com 307 —
+  // o logo aparecia partido em todas as paginas, inclusive na de entrar.
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)"],
 };
