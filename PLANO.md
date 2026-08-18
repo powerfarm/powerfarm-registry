@@ -39,17 +39,34 @@ Quem existe, que chave é de quem, e quem é quem no Supabase Auth.
 É a cola: o `user_id` do ADK, o sign-in do Cloudflare OS e o bearer dos LABs
 passam todos a apontar para o mesmo id.
 
-### 02 — CAS
-`blobs (hash pk, bytes, media_type, created_at)`
+### 02 — manifesto  ✅ aplicada
+`artifacts`, `artifact_versions`, `artifact_relations`
 
-Só INSERT, nunca UPDATE nem DELETE.
-`check (hash = encode(sha256(bytes),'hex'))` — integridade sem serviço nenhum.
-Opcional: nada nas migrations seguintes obriga a usar.
+**Feita, e substituiu o que a 02 e a 03 iam ser.** A razão: o registry não é
+armazém. Não guarda bytes — guarda a declaração de que a PowerFarm reconhece um
+artefacto exato, de uma fonte exata, numa versão exata. Não há coluna `content`;
+há `source_repo`, `source_commit`, `source_path` e `sha256`.
 
-### 03 — registry
-`definitions`
+Isso dissolveu a necessidade de uma tabela `blobs` para já: o commit do git já é
+endereço de conteúdo, e o hash identifica os bytes sem os copiar. O `blobs` volta
+a ser preciso no dia em que houver artefacto que não viva em git nem em release —
+e aí entra como cache, nunca como proveniência.
 
-O primeiro livro: o que existe como conceito. Não são actores — esses estão em
+Estados: `draft`, `experimental`, `approved`, `deprecated`, `retained`, `retired`.
+Versão nova não apaga a anterior; muda-lhe o estado.
+
+Primeiros habitantes, reais: `pf.brand.symbol`, `pf.brand.wordmark`,
+`pf.brand.colors`, `pf.brand.tokens.css` — commit `0041f482`, sha256 calculado
+dos bytes, não inventado.
+
+### 03 — CAS, quando for preciso
+`blobs (hash pk, bytes, media_type)`
+
+Só INSERT. `check (hash = encode(sha256(bytes),'hex'))`.
+Adiada de propósito: enquanto tudo o que é admitido viver em git, ela não tem
+trabalho.
+
+O que ela era, e continua a valer como ideia: o primeiro livro, o que existe. Não são actores — esses estão em
 `identities`. São **definições imutáveis e versionadas**: spec de ferramenta,
 versão de modelo, definição de grafo, blueprint.
 Chave é o hash. Aponta para `blobs`. Tem dono: uma identity.
