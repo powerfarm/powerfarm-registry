@@ -109,3 +109,5 @@ line-height:1;margin:30px 0 12px}
 font-size:var(--pf-type-label);text-transform:uppercase;
 letter-spacing:var(--pf-tracking-label);padding-top:2px}
 .evidencia .linha b{font-weight:400;word-break:break-all}
+.volta{color:var(--dim);font-size:var(--pf-type-label);margin:16px 0 0;
+padding-top:12px;border-top:1px solid var(--line)}

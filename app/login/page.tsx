@@ -1,58 +1,34 @@
 "use client";
-import { useState } from "react";
+import { PowerFarmLogin } from "@/ui/auth/PowerFarmLogin";
 import { supabaseBrowser } from "@/lib/supabase-browser";
+import { PUBLIC_BASE_URL, callbackUrl } from "@/lib/base-url";
 
+// O Registry e apenas o primeiro consumidor do bloco canonico. Ele traz o
+// fluxo real — Supabase — e o SEU proprio destino de volta. Outro app amanha
+// usa o mesmo componente e traz o dele.
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
-  const [msg, setMsg] = useState<string | null>(null);
-  const [erro, setErro] = useState<string | null>(null);
-  const [ocupado, setOcupado] = useState(false);
+  const ctx = {
+    produto: "Registry da PowerFarm",
+    emissor: new URL(process.env.NEXT_PUBLIC_SUPABASE_URL!).host,
+    destino: callbackUrl(),
 
-  async function comSenha(e: React.FormEvent) {
-    e.preventDefault();
-    setOcupado(true); setErro(null); setMsg(null);
-    const { error } = await supabaseBrowser().auth.signInWithPassword({ email, password: pass });
-    if (error) { setErro(error.message); setOcupado(false); return; }
-    window.location.href = "/";
-  }
+    entrarComSenha: async (email: string, senha: string) => {
+      const { error } = await supabaseBrowser().auth
+        .signInWithPassword({ email, password: senha });
+      return error ? { erro: error.message } : {};
+    },
 
-  async function porLink() {
-    setOcupado(true); setErro(null); setMsg(null);
-    const { error } = await supabaseBrowser().auth.signInWithOtp({
-      email,
-      options: { emailRedirectTo: `${window.location.origin}/auth/callback` },
-    });
-    setOcupado(false);
-    if (error) setErro(error.message);
-    else setMsg("Link enviado. Verifica o email.");
-  }
+    pedirLink: async (email: string) => {
+      const { error } = await supabaseBrowser().auth.signInWithOtp({
+        email,
+        // O destino e do consumidor e esta na allowlist do emissor.
+        options: { emailRedirectTo: callbackUrl() },
+      });
+      return error ? { erro: error.message } : {};
+    },
 
-  return (
-    <>
-      <h1>Entrar</h1>
-      <p className="sub">Registry da PowerFarm</p>
-      <div className="card" style={{ maxWidth: 380 }}>
-        <form onSubmit={comSenha}>
-          <div style={{ marginBottom: 12 }}>
-            <label>Email</label>
-            <input type="email" value={email} required
-              onChange={(e) => setEmail(e.target.value)} />
-          </div>
-          <div style={{ marginBottom: 16 }}>
-            <label>Senha</label>
-            <input type="password" value={pass}
-              onChange={(e) => setPass(e.target.value)} />
-          </div>
-          <div style={{ display: "flex", gap: 10 }}>
-            <button type="submit" disabled={ocupado || !email}>Entrar</button>
-            <button type="button" className="ghost" disabled={ocupado || !email}
-              onClick={porLink}>Enviar link</button>
-          </div>
-        </form>
-        {msg && <p className="sub" style={{ margin: "12px 0 0" }}>{msg}</p>}
-        {erro && <p className="erro">{erro}</p>}
-      </div>
-    </>
-  );
+    aoEntrar: () => { window.location.href = PUBLIC_BASE_URL + "/"; },
+  };
+
+  return <PowerFarmLogin ctx={ctx} />;
 }
