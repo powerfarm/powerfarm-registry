@@ -74,7 +74,14 @@ line-height:var(--pf-leading-heading);color:var(--tx)}
 .stat span{color:var(--dim);font-size:var(--pf-type-label);
 text-transform:uppercase;letter-spacing:var(--pf-tracking-label)}
 .erro{color:var(--bad);font-size:var(--pf-type-body-sm);margin-top:10px}
+.sucesso{color:var(--ok);font-size:var(--pf-type-body-sm);margin-top:10px}
 .vazio{color:var(--dim);font-size:var(--pf-type-body-sm);padding:18px 0}
+
+.gadget-editor textarea{min-height:480px;resize:vertical;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+font-size:var(--pf-type-caption);line-height:1.5;margin-bottom:14px}
+.editor-actions{display:flex;align-items:center;gap:14px}
+.editor-actions span{color:var(--dim);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+font-size:var(--pf-type-label)}
 
 /* ------------------------------------------------------------------ store */
 .busca{display:flex;gap:10px;margin-bottom:16px}
