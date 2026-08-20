@@ -27,7 +27,13 @@ export default function Login() {
       return error ? { erro: error.message } : {};
     },
 
-    aoEntrar: () => { window.location.href = PUBLIC_BASE_URL + "/"; },
+    // O consent chega ca com ?redirect=/oauth/consent?... — depois de entrar,
+    // volta-se la. So caminhos internos: um destino absoluto seria open redirect.
+    aoEntrar: () => {
+      const pedido = new URLSearchParams(window.location.search).get("redirect");
+      const destino = pedido?.startsWith("/") && !pedido.startsWith("//") ? pedido : "/";
+      window.location.href = PUBLIC_BASE_URL + destino;
+    },
   };
 
   return <PowerFarmLogin ctx={ctx} />;
