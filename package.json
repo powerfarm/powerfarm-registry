@@ -9,12 +9,13 @@
   "scripts": {
     "dev": "next dev",
     "brand:build": "node scripts/build-brand.mjs",
+    "brand:check": "node scripts/check-brand.mjs",
     "brand:lock": "node scripts/build-brand.mjs --write-lock",
     "prebuild": "npm run brand:build",
     "build": "next build",
     "start": "next start",
     "migrations:check": "node scripts/check-migration-parity.mjs",
-    "test": "node --test tests/*.test.mjs && npm run migrations:check"
+    "test": "node --test tests/*.test.mjs && npm run migrations:check && npm run brand:check"
   },
   "dependencies": {
     "@supabase/ssr": "^0.7.0",

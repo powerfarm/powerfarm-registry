@@ -23,5 +23,6 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # npm test builds the canonical brand and rejects duplicated tokens or assets.
       - run: npm test
       - run: npm run build
