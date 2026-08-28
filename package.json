@@ -8,6 +8,9 @@
   ],
   "scripts": {
     "dev": "next dev",
+    "brand:build": "node scripts/build-brand.mjs",
+    "brand:lock": "node scripts/build-brand.mjs --write-lock",
+    "prebuild": "npm run brand:build",
     "build": "next build",
     "start": "next start",
     "migrations:check": "node scripts/check-migration-parity.mjs",

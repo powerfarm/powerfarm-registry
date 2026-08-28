@@ -3,6 +3,9 @@
   "version": "0.5.1",
   "private": true,
   "type": "module",
+  "scripts": {
+    "build": "node ../scripts/build-brand.mjs"
+  },
   "files": [
     ".generated",
     "brand-lock.json",
