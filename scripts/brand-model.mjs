@@ -107,6 +107,18 @@ function compileLogoClasses() {
 
 .pf-brand-wordmark-horizontal-black {
   background-image: url("./logo/powerfarm-horizontal-black.svg");
+}
+
+.pf-brand-symbol-master {
+  background-image: url("./logo/powerfarm-symbol-master.svg");
+}
+
+.pf-brand-symbol-cream {
+  background-image: url("./logo/powerfarm-symbol-cream.svg");
+}
+
+.pf-brand-symbol-black {
+  background-image: url("./logo/powerfarm-symbol-black.svg");
 }`;
 }
 

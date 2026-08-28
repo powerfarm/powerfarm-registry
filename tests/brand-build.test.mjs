@@ -11,6 +11,10 @@ test("compiler derives CSS from v0.5.1 JSON tokens", async () => {
   assert.match(css, /--pf-space-2xs: 4px;/);
   assert.match(css, /--pf-type-h1: 40px;/);
   assert.match(css, /--pf-font-display: "Anton", "Arial Narrow", Impact, sans-serif;/);
+  assert.match(css, /\.pf-brand-symbol-master/);
+  assert.match(css, /powerfarm-symbol-master\.svg/);
+  assert.match(css, /\.pf-brand-symbol-cream/);
+  assert.match(css, /\.pf-brand-symbol-black/);
 });
 
 test("build verifies deterministic outputs against the committed lock", async () => {

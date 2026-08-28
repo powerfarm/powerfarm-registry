@@ -10,6 +10,8 @@
     "react": "^19.0.0"
   },
   "exports": {
+    ".": "./src/index.ts",
+    "./styles.css": "./src/identity.css",
     "./machine": "./src/machine.mjs",
     "./types": "./src/identity-types.ts"
   }
