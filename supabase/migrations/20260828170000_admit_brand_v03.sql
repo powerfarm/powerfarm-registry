@@ -3,8 +3,8 @@
 -- Nao e a migration 03 de blobs. Essa continua adiada: estes bytes vivem
 -- no pacote de marca e no ficheiro do kit. O registry so declara.
 --
--- Numero 0004 e nao 0003: o 0003 ja esta aplicado no projeto com o nome
--- 'autoridade'. Numero gasto nao se reutiliza.
+-- Versao 20260828170000: 0004 ja pertence a adk_runtime no banco vivo.
+-- Esta migration ainda nao foi aplicada e por isso avanca sem reescrever historia.
 --
 -- Versao nova nao apaga a anterior. 0.2 passa a retained.
 -- Hashes sao dos bytes lidos neste disco, 2026-08-19.

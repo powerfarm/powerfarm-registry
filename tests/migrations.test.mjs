@@ -6,15 +6,15 @@ const migrationsUrl = new URL("../supabase/migrations/", import.meta.url);
 
 test("migration source contains authority, one ADK table migration, and its advisor follow-up", async () => {
   const files = (await readdir(migrationsUrl)).filter((name) => name.endsWith(".sql")).sort();
-  assert.deepEqual(files.slice(0, 5), [
+  assert.deepEqual(files, [
     "0001_identity.sql",
     "0002_manifest.sql",
     "0003_autoridade.sql",
     "0004_adk_runtime.sql",
     "0005_adk_runtime_advisors.sql",
+    "20260820192536_gadget_lineage.sql",
+    "20260828170000_admit_brand_v03.sql",
   ]);
-  assert.equal(files.length, 6);
-  assert.match(files[5], /^\d{14}_gadget_lineage\.sql$/);
 });
 
 test("Gadget lineage migration resolves an exact authorized execution snapshot", async () => {
