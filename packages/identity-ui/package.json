@@ -1,0 +1,16 @@
+{
+  "name": "@powerfarm/identity-ui",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@powerfarm/ui-core": "0.1.0"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  },
+  "exports": {
+    "./machine": "./src/machine.mjs",
+    "./types": "./src/identity-types.ts"
+  }
+}
