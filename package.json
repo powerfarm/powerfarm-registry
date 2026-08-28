@@ -8,6 +8,8 @@
   ],
   "scripts": {
     "dev": "next dev",
+    "identity:dev": "npm run brand:build && npm run dev --workspace @powerfarm/identity-host",
+    "identity:build": "npm run brand:build && npm run build --workspace @powerfarm/identity-host",
     "brand:build": "node scripts/build-brand.mjs",
     "brand:check": "node scripts/check-brand.mjs",
     "brand:lock": "node scripts/build-brand.mjs --write-lock",

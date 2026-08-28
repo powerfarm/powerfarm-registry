@@ -69,3 +69,10 @@ test("guard rejects relative imports into brand internals", async () => {
   });
   await assert.rejects(checkBrandRepository({ root }), /apps\/example\/source\.ts: relative import into brand internals/);
 });
+
+test("guard ignores nested framework build output", async () => {
+  const root = await fixture({
+    "apps/identity/.next/static/generated.css": ".copy { color: #080702; font-family: Anton; }",
+  });
+  await assert.doesNotReject(checkBrandRepository({ root }));
+});

@@ -153,6 +153,19 @@
   font-size: var(--pf-type-body-sm);
 }
 
+.pf-identity-host-notice {
+  position: fixed;
+  z-index: 1;
+  top: var(--pf-space-lg);
+  right: var(--pf-space-lg);
+  max-width: var(--pf-identity-panel-max);
+  margin: 0;
+  padding: var(--pf-space-sm) var(--pf-space-md);
+  border-left: var(--pf-control-border-width) solid var(--pf-signal-warning);
+  background: var(--pf-surface-panel);
+  color: var(--pf-text-primary);
+}
+
 .pf-consent-stage {
   place-items: center;
 }

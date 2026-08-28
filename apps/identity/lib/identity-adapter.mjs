@@ -1,5 +1,7 @@
 import { buildCallbackUrl } from "./auth-flow.mjs";
 
+/** @typedef {import("../../../packages/identity-ui/src/identity-types").IdentityAdapter} IdentityAdapter */
+
 const messages = {
   cancelled: "A operação foi cancelada.",
   unavailable: "Passkey indisponível neste dispositivo.",
@@ -33,6 +35,15 @@ function passkeyFailure(error) {
   return { ok: false, kind, message: messages[kind] };
 }
 
+/**
+ * @param {{
+ *   client: any;
+ *   callbackUrl: string;
+ *   authorizationId?: string;
+ *   passkeyAvailable?: boolean;
+ * }} options
+ * @returns {IdentityAdapter}
+ */
 export function createIdentityAdapter({
   client,
   callbackUrl,

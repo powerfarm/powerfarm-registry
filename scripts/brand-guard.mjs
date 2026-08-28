@@ -5,6 +5,7 @@ import { extname, join, relative } from "node:path";
 const SOURCE_ROOTS = ["app", "apps", "lib", "packages", "public", "ui"];
 const TEXT_EXTENSIONS = new Set([".css", ".js", ".jsx", ".mjs", ".json", ".ts", ".tsx", ".svg"]);
 const ASSET_EXTENSIONS = new Set([".svg", ".woff", ".woff2", ".ttf", ".otf"]);
+const GENERATED_DIRECTORIES = new Set([".next", "coverage", "dist", "node_modules"]);
 
 async function walk(path) {
   const entries = await readdir(path, { withFileTypes: true }).catch((error) => {
@@ -13,6 +14,7 @@ async function walk(path) {
   });
   const files = [];
   for (const entry of entries.sort((left, right) => left.name.localeCompare(right.name))) {
+    if (entry.isDirectory() && GENERATED_DIRECTORIES.has(entry.name)) continue;
     const child = join(path, entry.name);
     if (entry.isDirectory()) files.push(...await walk(child));
     else files.push(child);
