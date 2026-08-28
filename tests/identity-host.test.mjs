@@ -13,6 +13,7 @@ test("Identity is an independently buildable workspace consuming canonical UI", 
   const config = await source("next.config.mjs");
   const layout = await source("app/layout.tsx");
   const rootPkg = JSON.parse(await readFile(new URL("../../package.json", root), "utf8"));
+  const rootTsconfig = JSON.parse(await readFile(new URL("../../tsconfig.json", root), "utf8"));
 
   assert.equal(pkg.name, "@powerfarm/identity-host");
   assert.equal(pkg.dependencies["@powerfarm/identity-ui"], "0.1.0");
@@ -20,6 +21,7 @@ test("Identity is an independently buildable workspace consuming canonical UI", 
   assert.match(config, /transpilePackages:\s*\["@powerfarm\/identity-ui"\]/);
   assert.match(layout, /@powerfarm\/identity-ui\/styles\.css/);
   assert.match(rootPkg.scripts["identity:build"], /@powerfarm\/identity-host/);
+  assert.ok(rootTsconfig.exclude.includes("apps"));
 });
 
 test("login host has one passwordless provider adapter and no production literals", async () => {
@@ -41,4 +43,12 @@ test("callback exchanges the code then reconstructs only local routes", async ()
   assert.match(callback, /authorizationRoute/);
   assert.match(callback, /result", "expired"/);
   assert.doesNotMatch(callback, /error_description|window\.location|id\.powerfarm\.app/);
+});
+
+test("Identity refreshes issuer cookies without adding a second access policy", async () => {
+  const middleware = await source("middleware.ts");
+  assert.match(middleware, /createServerClient/);
+  assert.match(middleware, /getClaims\(\)/);
+  assert.match(middleware, /response\.cookies\.set/);
+  assert.doesNotMatch(middleware, /redirect\(|service_role|SUPABASE_SECRET/);
 });
