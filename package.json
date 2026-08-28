@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "migrations:check": "node scripts/check-migration-parity.mjs",
-    "test": "node --test tests/*.test.mjs"
+    "test": "node --test tests/*.test.mjs && npm run migrations:check"
   },
   "dependencies": {
     "@supabase/ssr": "^0.7.0",
