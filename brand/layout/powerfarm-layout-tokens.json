@@ -1,0 +1,78 @@
+{
+  "brand": "POWERFARM",
+  "system": "Layout System",
+  "version": "0.5.1",
+  "principle": "Structured, engineered composition with one dominant visual idea.",
+  "spacing_px": {
+    "2xs": 4,
+    "xs": 8,
+    "sm": 12,
+    "md": 16,
+    "lg": 24,
+    "xl": 32,
+    "2xl": 48,
+    "3xl": 64,
+    "4xl": 96,
+    "5xl": 128
+  },
+  "grid": {
+    "desktop": {
+      "columns": 12,
+      "gutter": 24,
+      "outer_margin": 64,
+      "max_content_width": 1440
+    },
+    "tablet": {
+      "columns": 8,
+      "gutter": 20,
+      "outer_margin": 40
+    },
+    "mobile": {
+      "columns": 4,
+      "gutter": 16,
+      "outer_margin": 20
+    },
+    "presentation": {
+      "columns": 12,
+      "gutter": 20,
+      "outer_margin": 60
+    },
+    "print": {
+      "columns": 6,
+      "gutter": 18,
+      "outer_margin": 42
+    }
+  },
+  "alignment": {
+    "preferred": [
+      "left aligned",
+      "top aligned",
+      "edge-to-grid",
+      "intentional asymmetry"
+    ],
+    "avoid": [
+      "center everything",
+      "random floating elements",
+      "equal visual weight everywhere"
+    ]
+  },
+  "ratios": {
+    "text_image_split_default": "5/7 or 7/5",
+    "hero_text_zone": "30–40% of composition",
+    "card_media_ratio": "16:10",
+    "report_image_ratio": "3:2",
+    "social_portrait_safe_zone": "center 80% width, top/bottom 8% clear"
+  },
+  "rules": [
+    "Use one dominant visual idea per composition.",
+    "Anchor key content to a grid edge.",
+    "Prefer generous negative space over decorative filler.",
+    "Use amber as an accent, not a large default field.",
+    "Allow oversized typography to crop only when legibility remains obvious.",
+    "Keep the primary logo out of dense patterns and busy image detail.",
+    "Use diagonal crops sparingly to create movement.",
+    "Do not stack multiple brand motifs in the same area.",
+    "Maintain a clear reading order: brand/section, headline, supporting information, action/data.",
+    "Cards should align to the same grid as the page rather than creating an unrelated micro-grid."
+  ]
+}

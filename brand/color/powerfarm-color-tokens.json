@@ -1,0 +1,307 @@
+{
+  "brand": "POWERFARM",
+  "version": "0.5.1",
+  "colors": {
+    "powerfarm-black": {
+      "hex": "#080702",
+      "rgb": [
+        8,
+        7,
+        2
+      ],
+      "cmyk": [
+        0,
+        12,
+        75,
+        97
+      ],
+      "role": "Primary background"
+    },
+    "powerfarm-cream": {
+      "hex": "#F8DFC1",
+      "rgb": [
+        248,
+        223,
+        193
+      ],
+      "cmyk": [
+        0,
+        10,
+        22,
+        3
+      ],
+      "role": "Primary identity color"
+    },
+    "energy-amber": {
+      "hex": "#FFB02E",
+      "rgb": [
+        255,
+        176,
+        46
+      ],
+      "cmyk": [
+        0,
+        31,
+        82,
+        0
+      ],
+      "role": "Restrained accent"
+    },
+    "graphite": {
+      "hex": "#1A1A1A",
+      "rgb": [
+        26,
+        26,
+        26
+      ],
+      "cmyk": [
+        0,
+        0,
+        0,
+        90
+      ],
+      "role": "Panels and depth"
+    },
+    "steel": {
+      "hex": "#4D4D4D",
+      "rgb": [
+        77,
+        77,
+        77
+      ],
+      "cmyk": [
+        0,
+        0,
+        0,
+        70
+      ],
+      "role": "Secondary text and interface"
+    },
+    "white": {
+      "hex": "#FFFFFF",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "cmyk": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "role": "Utility neutral"
+    },
+    "amber-deep": {
+      "hex": "#A96600",
+      "rgb": [
+        169,
+        102,
+        0
+      ],
+      "cmyk": [
+        0,
+        40,
+        100,
+        34
+      ],
+      "role": "Amber for use ON cream / light surfaces",
+      "note": "Energy Amber #FFB02E scores 1.42:1 on cream and is unreadable. Use Amber Deep for amber TEXT, ICONS, and THIN RULES on light surfaces. Large solid decorative blocks may keep Energy Amber, since they carry no legibility requirement."
+    }
+  },
+  "note": "Powerfarm Black and Powerfarm Cream are sampled from the supplied raster reference. The packaged token values are the working source; final production lock requires brand-owner approval.",
+  "contrast": {
+    "standard": "WCAG 2.1",
+    "pairs": [
+      {
+        "fg": "powerfarm-cream",
+        "bg": "powerfarm-black",
+        "ratio": 15.66,
+        "result": "AA / AAA"
+      },
+      {
+        "fg": "energy-amber",
+        "bg": "powerfarm-black",
+        "ratio": 11.04,
+        "result": "AA / AAA"
+      },
+      {
+        "fg": "energy-amber",
+        "bg": "graphite",
+        "ratio": 9.53,
+        "result": "AA / AAA"
+      },
+      {
+        "fg": "powerfarm-black",
+        "bg": "powerfarm-cream",
+        "ratio": 15.66,
+        "result": "AA / AAA"
+      },
+      {
+        "fg": "steel",
+        "bg": "powerfarm-cream",
+        "ratio": 6.57,
+        "result": "AA"
+      },
+      {
+        "fg": "amber-deep",
+        "bg": "powerfarm-cream",
+        "ratio": 3.56,
+        "result": "AA large text only (>=18.66px bold / 24px regular)"
+      },
+      {
+        "fg": "steel",
+        "bg": "powerfarm-black",
+        "ratio": 2.39,
+        "result": "FAIL - rules and dividers only, never text"
+      },
+      {
+        "fg": "energy-amber",
+        "bg": "powerfarm-cream",
+        "ratio": 1.42,
+        "result": "FAIL - never use"
+      }
+    ]
+  },
+  "rules": [
+    "Energy Amber is a dark-surface accent. On light surfaces, substitute Amber Deep for text, icons, and thin rules; solid decorative blocks may keep Energy Amber.",
+    "Steel on black is a rule/divider colour only. It fails contrast as text.",
+    "Ratio target ~55% dark / ~32% cream / ~10% support gray / ~3% amber."
+  ],
+  "tint_ramp": {
+    "basis": "Powerfarm Cream #F8DFC1 mixed into Powerfarm Black #080702 in sRGB, at 5% steps.",
+    "why": "A v0.3 audit found 26 distinct hex values against 7 documented ones. The extra values were legitimate derived tints inside layout and application mockups, but undocumented. They are now snapped to this ramp; no undocumented value remains in the package.",
+    "naming": "--pf-tint-NN, where NN is the cream percentage.",
+    "rule": "Tints are surface and structure: panels, dividers, muted labels, depth. They are never a substitute for the accent, and they never carry brand meaning on their own.",
+    "stops": [
+      {
+        "token": "--pf-tint-05",
+        "hex": "#14120C",
+        "cream_percent": 5,
+        "contrast_on_black": 1.08,
+        "contrast_on_cream": 14.55,
+        "usable_as": "text on black: FAIL; text on cream: AA"
+      },
+      {
+        "token": "--pf-tint-10",
+        "hex": "#201D15",
+        "cream_percent": 10,
+        "contrast_on_black": 1.2,
+        "contrast_on_cream": 13.07,
+        "usable_as": "text on black: FAIL; text on cream: AA"
+      },
+      {
+        "token": "--pf-tint-15",
+        "hex": "#2C271F",
+        "cream_percent": 15,
+        "contrast_on_black": 1.36,
+        "contrast_on_cream": 11.51,
+        "usable_as": "text on black: FAIL; text on cream: AA"
+      },
+      {
+        "token": "--pf-tint-20",
+        "hex": "#38322A",
+        "cream_percent": 20,
+        "contrast_on_black": 1.59,
+        "contrast_on_cream": 9.84,
+        "usable_as": "text on black: FAIL; text on cream: AA"
+      },
+      {
+        "token": "--pf-tint-25",
+        "hex": "#443D32",
+        "cream_percent": 25,
+        "contrast_on_black": 1.88,
+        "contrast_on_cream": 8.33,
+        "usable_as": "text on black: FAIL; text on cream: AA"
+      },
+      {
+        "token": "--pf-tint-30",
+        "hex": "#50483B",
+        "cream_percent": 30,
+        "contrast_on_black": 2.24,
+        "contrast_on_cream": 7.0,
+        "usable_as": "text on black: FAIL; text on cream: AA"
+      },
+      {
+        "token": "--pf-tint-35",
+        "hex": "#5C5344",
+        "cream_percent": 35,
+        "contrast_on_black": 2.66,
+        "contrast_on_cream": 5.88,
+        "usable_as": "text on black: FAIL; text on cream: AA"
+      },
+      {
+        "token": "--pf-tint-40",
+        "hex": "#685D4E",
+        "cream_percent": 40,
+        "contrast_on_black": 3.13,
+        "contrast_on_cream": 5.0,
+        "usable_as": "text on black: AA large only; text on cream: AA"
+      },
+      {
+        "token": "--pf-tint-45",
+        "hex": "#746858",
+        "cream_percent": 45,
+        "contrast_on_black": 3.71,
+        "contrast_on_cream": 4.22,
+        "usable_as": "text on black: AA large only; text on cream: AA large only"
+      },
+      {
+        "token": "--pf-tint-50",
+        "hex": "#807361",
+        "cream_percent": 50,
+        "contrast_on_black": 4.36,
+        "contrast_on_cream": 3.59,
+        "usable_as": "text on black: AA large only; text on cream: AA large only"
+      },
+      {
+        "token": "--pf-tint-55",
+        "hex": "#8C7E6B",
+        "cream_percent": 55,
+        "contrast_on_black": 5.1,
+        "contrast_on_cream": 3.07,
+        "usable_as": "text on black: AA; text on cream: AA large only"
+      },
+      {
+        "token": "--pf-tint-60",
+        "hex": "#988975",
+        "cream_percent": 60,
+        "contrast_on_black": 5.92,
+        "contrast_on_cream": 2.64,
+        "usable_as": "text on black: AA; text on cream: FAIL"
+      },
+      {
+        "token": "--pf-tint-65",
+        "hex": "#A4937E",
+        "cream_percent": 65,
+        "contrast_on_black": 6.77,
+        "contrast_on_cream": 2.31,
+        "usable_as": "text on black: AA; text on cream: FAIL"
+      },
+      {
+        "token": "--pf-tint-70",
+        "hex": "#B09E88",
+        "cream_percent": 70,
+        "contrast_on_black": 7.77,
+        "contrast_on_cream": 2.02,
+        "usable_as": "text on black: AA; text on cream: FAIL"
+      },
+      {
+        "token": "--pf-tint-75",
+        "hex": "#BCA991",
+        "cream_percent": 75,
+        "contrast_on_black": 8.85,
+        "contrast_on_cream": 1.77,
+        "usable_as": "text on black: AA; text on cream: FAIL"
+      },
+      {
+        "token": "--pf-tint-80",
+        "hex": "#C8B49B",
+        "cream_percent": 80,
+        "contrast_on_black": 10.04,
+        "contrast_on_cream": 1.56,
+        "usable_as": "text on black: AA; text on cream: FAIL"
+      }
+    ]
+  }
+}

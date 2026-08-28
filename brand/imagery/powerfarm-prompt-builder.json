@@ -1,0 +1,13 @@
+{
+  "brand": "POWERFARM",
+  "version": "0.5.1",
+  "template": "Create a {quality} POWERFARM image of {subject} in {environment}, {action}. Compose it using {composition}. Use {lighting}. Preserve {realism}. Keep the palette {palette}. {negative}. Intended for {use}.",
+  "defaults": {
+    "quality": "credible, premium, cinematic but physically realistic",
+    "composition": "strong geometry, one clear focal point, and useful negative space",
+    "lighting": "directional natural or practical industrial light with controlled contrast",
+    "realism": "believable materials, equipment geometry, scale, wear, reflections, and interfaces",
+    "palette": "deep charcoal, steel gray, warm neutral materials, with restrained amber accents",
+    "negative": "Avoid stock-photo posing, cyberpunk color, fantasy electricity, excessive glow, impossible equipment, fake interfaces, and oversaturation"
+  }
+}

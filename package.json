@@ -1,6 +1,11 @@
 {
   "name": "powerfarm-registry",
   "private": true,
+  "workspaces": [
+    "brand",
+    "packages/*",
+    "apps/*"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+<rect width="200" height="200" fill="#080702"/>
+<line x1="0" y1="0" x2="0" y2="200" stroke="#4D4D4D" stroke-width="1" opacity=".13"/>
+<line x1="50" y1="0" x2="50" y2="200" stroke="#4D4D4D" stroke-width="1" opacity=".13"/>
+<line x1="100" y1="0" x2="100" y2="200" stroke="#4D4D4D" stroke-width="2" opacity=".26"/>
+<line x1="150" y1="0" x2="150" y2="200" stroke="#4D4D4D" stroke-width="1" opacity=".13"/>
+<line x1="200" y1="0" x2="200" y2="200" stroke="#4D4D4D" stroke-width="1" opacity=".13"/>
+<line x1="0" y1="0" x2="200" y2="0" stroke="#4D4D4D" stroke-width="1" opacity=".13"/>
+<line x1="0" y1="50" x2="200" y2="50" stroke="#4D4D4D" stroke-width="1" opacity=".13"/>
+<line x1="0" y1="100" x2="200" y2="100" stroke="#4D4D4D" stroke-width="2" opacity=".26"/>
+<line x1="0" y1="150" x2="200" y2="150" stroke="#4D4D4D" stroke-width="1" opacity=".13"/>
+<line x1="0" y1="200" x2="200" y2="200" stroke="#4D4D4D" stroke-width="1" opacity=".13"/>
+<circle cx="100" cy="100" r="4" fill="#FFB02E" opacity=".9"/>
+</svg>

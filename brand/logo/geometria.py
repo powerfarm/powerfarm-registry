@@ -1,0 +1,55 @@
+"""A fonte unica da marca POWERFARM.
+
+Aqui a marca existe como numeros. Os dez ficheiros de logo, as dez aplicacoes
+que a embutem e o simbolo que o registry publica sao todos gerados daqui por
+`gerar.py`. Nenhum deles se edita a mao.
+
+IMPORTANTE — dois niveis, nao um. Este ficheiro guarda a forma ja resolvida:
+`ANEL_D` e `BOLT_D` sao paths finais, e a tabela abaixo documenta de onde
+vieram. Alterar um numero na tabela nao muda os paths.
+
+Os parametros que geram a forma vivem em `reconstrucao/construir-simbolo.py`.
+Para mudar a marca:
+
+    1. editar o parametro em reconstrucao/construir-simbolo.py
+    2. python3 reconstrucao/construir-simbolo.py   -> reescreve os paths
+    3. actualizar ANEL_D, BOLT_D e a caixa optica aqui
+    4. python3 logo/gerar.py                       -> propaga a tudo
+
+O passo 3 e manual de proposito: mexer na geometria e raro e deve ser deliberado.
+O que nunca deve acontecer e o passo 4 ser saltado, porque e ai que as doze
+copias voltavam a divergir.
+
+Os valores vieram de medir o raster de referencia: rectas ajustadas as arestas,
+circulos ajustados aos cantos, transformada de distancia para a espessura. O
+raciocinio completo esta em `reconstrucao/README.md`; o que se segue e o
+resultado.
+
+    modulo u ............... 64        prancheta ......... 1024
+    largura na cinta ....... 896 = 14u aresta de topo .... 384 = 6u
+    altura ate ao apice .... 448 =  7u truncatura ........ 192 = 3u
+    altura abaixo da cinta . 512 =  8u espessura ......... 54
+    raio nas pontas ........  40       raio no topo ......  48
+
+As arestas superiores estao a 45 graus exactos. O topo nao e um vertice: e uma
+aresta horizontal, e o raio atravessa-a ao meio e parte-a em duas. Por isso a
+marca sao tres formas, nao duas.
+"""
+
+U = 64
+TELA = 1024
+
+# Caixa optica da marca dentro da prancheta. Nao e quadrada nem centrada por
+# acidente: os cantos arredondados puxam os lados para dentro e as pontas do
+# raio definem o topo e a base.
+MARCA_X = 78.7
+MARCA_Y = 64.0
+MARCA_LARG = 866.5
+MARCA_ALT = 882.0
+
+CAIXA = ("Geometric master on a 1024 grid, module 64. Enclosure 14u wide, "
+         "apex at 45 degrees truncated by 3u leaving a 6u flat top, 8u below "
+         "the girdle. Stroke 54, corner radii 40 and 48.")
+
+ANEL_D = """M 89.8,422.2 L 89.1,423.0 L 88.4,423.7 L 87.8,424.5 L 87.2,425.2 L 86.6,426.0 L 86.0,426.8 L 85.5,427.6 L 84.9,428.5 L 84.4,429.3 L 83.9,430.2 L 83.4,431.0 L 83.0,431.9 L 82.6,432.8 L 82.1,433.7 L 81.8,434.6 L 81.4,435.5 L 81.1,436.4 L 80.7,437.4 L 80.4,438.3 L 80.2,439.2 L 79.9,440.2 L 79.7,441.2 L 79.5,442.1 L 79.3,443.1 L 79.2,444.1 L 79.0,445.1 L 78.9,446.0 L 78.8,447.0 L 78.8,448.0 L 78.8,449.0 L 78.7,450.0 L 78.8,451.0 L 78.8,451.9 L 78.9,452.9 L 79.0,453.9 L 79.1,454.9 L 79.2,455.9 L 79.4,456.8 L 79.6,457.8 L 79.8,458.8 L 80.0,459.7 L 80.2,460.7 L 80.5,461.6 L 80.8,462.6 L 81.2,463.5 L 81.5,464.4 L 81.9,465.3 L 82.3,466.2 L 82.7,467.1 L 83.1,468.0 L 83.6,468.9 L 84.1,469.8 L 84.6,470.6 L 85.1,471.4 L 85.6,472.3 L 86.2,473.1 L 86.8,473.9 L 87.4,474.6 L 88.0,475.4 L 88.6,476.2 L 366.1,793.2 L 386.8,734.9 L 233.8,560.0 L 232.1,560.0 L 232.9,559.0 L 137.9,450.5 L 342.4,246.0 L 466.9,246.0 L 507.3,192.0 L 339.9,192.0 L 338.7,192.0 L 337.5,192.1 L 336.4,192.1 L 335.2,192.2 L 334.0,192.4 L 332.8,192.5 L 331.7,192.7 L 330.5,192.9 L 329.4,193.2 L 328.2,193.4 L 327.1,193.7 L 325.9,194.1 L 324.8,194.4 L 323.7,194.8 L 322.6,195.2 L 321.5,195.7 L 320.4,196.1 L 319.4,196.6 L 318.3,197.1 L 317.3,197.7 L 316.2,198.2 L 315.2,198.8 L 314.2,199.4 L 313.2,200.1 L 312.2,200.8 L 311.3,201.4 L 310.4,202.2 L 309.4,202.9 L 308.5,203.7 L 307.6,204.4 L 306.8,205.2 L 305.9,206.1 L 90.5,421.5 Z M 481.9,925.6 L 482.6,926.3 L 483.2,927.1 L 483.9,927.8 L 484.6,928.4 L 485.4,929.1 L 486.1,929.8 L 486.9,930.4 L 487.7,931.0 L 488.4,931.6 L 489.2,932.2 L 490.1,932.7 L 490.9,933.2 L 491.7,933.7 L 492.6,934.2 L 493.5,934.7 L 494.4,935.2 L 495.2,935.6 L 496.1,936.0 L 497.1,936.4 L 498.0,936.7 L 498.9,937.1 L 499.8,937.4 L 500.8,937.7 L 501.7,937.9 L 502.7,938.2 L 503.7,938.4 L 504.6,938.6 L 505.6,938.7 L 506.6,938.9 L 507.6,939.0 L 508.5,939.1 L 509.5,939.2 L 510.5,939.2 L 511.5,939.3 L 512.5,939.3 L 513.5,939.2 L 514.5,939.2 L 515.5,939.1 L 516.4,939.0 L 517.4,938.9 L 518.4,938.7 L 519.4,938.6 L 520.3,938.4 L 521.3,938.2 L 522.3,937.9 L 523.2,937.7 L 524.2,937.4 L 525.1,937.1 L 526.0,936.7 L 526.9,936.4 L 527.9,936.0 L 528.8,935.6 L 529.6,935.2 L 530.5,934.7 L 531.4,934.2 L 532.3,933.7 L 533.1,933.2 L 533.9,932.7 L 534.8,932.2 L 535.6,931.6 L 536.3,931.0 L 537.1,930.4 L 537.9,929.8 L 538.6,929.1 L 539.4,928.4 L 540.1,927.8 L 540.8,927.1 L 541.4,926.3 L 542.1,925.6 L 935.4,476.2 L 936.0,475.4 L 936.6,474.6 L 937.2,473.9 L 937.8,473.1 L 938.4,472.3 L 938.9,471.4 L 939.4,470.6 L 939.9,469.8 L 940.4,468.9 L 940.9,468.0 L 941.3,467.1 L 941.7,466.2 L 942.1,465.3 L 942.5,464.4 L 942.8,463.5 L 943.2,462.6 L 943.5,461.6 L 943.8,460.7 L 944.0,459.7 L 944.2,458.8 L 944.4,457.8 L 944.6,456.8 L 944.8,455.9 L 944.9,454.9 L 945.0,453.9 L 945.1,452.9 L 945.2,451.9 L 945.2,451.0 L 945.3,450.0 L 945.2,449.0 L 945.2,448.0 L 945.2,447.0 L 945.1,446.0 L 945.0,445.1 L 944.8,444.1 L 944.7,443.1 L 944.5,442.1 L 944.3,441.2 L 944.1,440.2 L 943.8,439.2 L 943.6,438.3 L 943.3,437.4 L 942.9,436.4 L 942.6,435.5 L 942.2,434.6 L 941.9,433.7 L 941.4,432.8 L 941.0,431.9 L 940.6,431.0 L 940.1,430.2 L 939.6,429.3 L 939.1,428.5 L 938.5,427.6 L 938.0,426.8 L 937.4,426.0 L 936.8,425.2 L 936.2,424.5 L 935.6,423.7 L 934.9,423.0 L 934.2,422.2 L 933.5,421.5 L 718.1,206.1 L 717.2,205.2 L 716.3,204.4 L 715.4,203.6 L 714.5,202.8 L 713.5,202.0 L 712.5,201.3 L 711.5,200.6 L 710.5,199.9 L 709.5,199.3 L 708.5,198.6 L 707.4,198.0 L 706.3,197.5 L 705.3,196.9 L 704.2,196.4 L 703.0,195.9 L 701.9,195.4 L 700.8,195.0 L 699.6,194.6 L 698.5,194.2 L 697.3,193.9 L 696.1,193.5 L 695.0,193.2 L 693.8,193.0 L 692.6,192.8 L 691.4,192.6 L 690.2,192.4 L 689.0,192.2 L 687.8,192.1 L 686.5,192.1 L 685.3,192.0 L 684.1,192.0 L 639.8,192.0 L 620.1,246.0 L 681.6,246.0 L 886.1,450.5 L 512.0,878.0 L 472.2,832.5 L 440.5,878.3 Z"""
+BOLT_D = """M 648.0,64.0 L 304.0,524.0 L 500.0,524.0 L 350.0,946.0 L 716.0,416.0 L 520.0,416.0 Z"""

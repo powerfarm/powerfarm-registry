@@ -1,0 +1,96 @@
+{
+  "brand": "POWERFARM",
+  "system": "Photography + Generative Image Direction",
+  "version": "0.5.1",
+  "brand_principle": "Controlled energy engineered into useful power.",
+  "mood": [
+    "credible",
+    "engineered",
+    "powerful",
+    "precise",
+    "cinematic",
+    "contemporary",
+    "calm",
+    "capable"
+  ],
+  "subjects": [
+    "energy infrastructure",
+    "solar installations",
+    "electrical systems",
+    "battery storage",
+    "industrial facilities",
+    "engineering",
+    "monitoring",
+    "field operations",
+    "maintenance",
+    "grid infrastructure"
+  ],
+  "lighting": {
+    "preferred": [
+      "directional natural light",
+      "low-angle sun",
+      "practical industrial lighting",
+      "controlled highlights",
+      "deep neutral shadows",
+      "soft atmospheric haze"
+    ],
+    "avoid": [
+      "rainbow lighting",
+      "neon cyberpunk",
+      "excessive glow",
+      "heavy HDR"
+    ]
+  },
+  "color": {
+    "dominant": [
+      "deep black",
+      "charcoal",
+      "steel gray",
+      "natural materials"
+    ],
+    "supporting": [
+      "warm cream"
+    ],
+    "accent": "restrained amber",
+    "accent_rule": "amber should appear sparingly and plausibly"
+  },
+  "composition": {
+    "preferred": [
+      "strong geometry",
+      "clear focal point",
+      "negative space",
+      "structural lines",
+      "large-scale perspective",
+      "clean foreground/background separation"
+    ],
+    "headline_safe_area": "reserve 20–40% of frame when image is intended for hero/banner use"
+  },
+  "people": {
+    "roles": [
+      "technician",
+      "engineer",
+      "operator",
+      "partner",
+      "decision-maker"
+    ],
+    "behavior": [
+      "focused",
+      "purposeful",
+      "working naturally",
+      "interacting with real systems"
+    ],
+    "avoid": [
+      "generic stock posing",
+      "exaggerated smiles",
+      "fake work scenarios"
+    ]
+  },
+  "aspect_guidance": {
+    "website_hero": "16:9 or wider; preserve a clean text zone",
+    "presentation": "16:9; subject can sit on one third",
+    "social_square": "1:1; single strong focal point",
+    "social_portrait": "4:5; emphasize person/equipment relationship",
+    "story_reel": "9:16; leave safe areas top and bottom",
+    "report": "3:2 or 4:3; editorial composition"
+  }
+}

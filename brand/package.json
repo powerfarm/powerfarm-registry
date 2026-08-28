@@ -1,0 +1,26 @@
+{
+  "name": "@powerfarm/brand",
+  "version": "0.5.1",
+  "private": true,
+  "type": "module",
+  "files": [
+    ".generated",
+    "brand-lock.json",
+    "**/*-tokens.json",
+    "typography/fonts",
+    "typography/licenses"
+  ],
+  "exports": {
+    "./css": "./.generated/index.css",
+    "./logo/*": "./.generated/logo/*.svg",
+    "./fonts/*": "./typography/fonts/*",
+    "./tokens/color": "./color/powerfarm-color-tokens.json",
+    "./tokens/typography": "./typography/powerfarm-typography-tokens.json",
+    "./tokens/layout": "./layout/powerfarm-layout-tokens.json",
+    "./tokens/iconography": "./iconography/powerfarm-iconography-tokens.json",
+    "./tokens/graphic-elements": "./graphic-elements/powerfarm-graphic-elements-tokens.json",
+    "./tokens/patterns": "./patterns/powerfarm-pattern-tokens.json",
+    "./tokens/imagery": "./imagery/powerfarm-imagery-tokens.json",
+    "./tokens/applications": "./applications/powerfarm-application-tokens.json"
+  }
+}

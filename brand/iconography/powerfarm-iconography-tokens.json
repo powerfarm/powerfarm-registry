@@ -1,0 +1,141 @@
+{
+  "brand": "POWERFARM",
+  "system": "Iconography",
+  "version": "0.5.1",
+  "grid": {
+    "viewBox": "0 0 64 64",
+    "base_size": 64
+  },
+  "stroke": {
+    "default": 4,
+    "small_size": 3,
+    "cap": "square",
+    "join": "bevel"
+  },
+  "color": {
+    "default": "#F8DFC1",
+    "accent": "#FFB02E",
+    "dark": "#080702",
+    "recoloring": "icons use currentColor"
+  },
+  "principles": [
+    "Geometric and technical rather than playful.",
+    "Prefer square caps and bevel joins.",
+    "Use consistent optical weight across the family.",
+    "Avoid enclosed micro-details that disappear at small sizes.",
+    "Use outline icons by default.",
+    "Use a single color per icon in normal UI.",
+    "Amber is for emphasis, active states, or key metrics.",
+    "Do not place iconography inside the official logo shape."
+  ],
+  "icons": [
+    {
+      "file": "01-energy.svg",
+      "name": "Energy",
+      "keywords": [
+        "power",
+        "electricity",
+        "energy"
+      ]
+    },
+    {
+      "file": "02-battery.svg",
+      "name": "Battery",
+      "keywords": [
+        "storage",
+        "battery",
+        "capacity"
+      ]
+    },
+    {
+      "file": "03-plug.svg",
+      "name": "Plug",
+      "keywords": [
+        "connection",
+        "power",
+        "electrical"
+      ]
+    },
+    {
+      "file": "04-solar.svg",
+      "name": "Solar",
+      "keywords": [
+        "solar",
+        "generation",
+        "renewable"
+      ]
+    },
+    {
+      "file": "05-grid.svg",
+      "name": "Grid",
+      "keywords": [
+        "grid",
+        "transmission",
+        "infrastructure"
+      ]
+    },
+    {
+      "file": "06-leaf.svg",
+      "name": "Sustainability",
+      "keywords": [
+        "sustainability",
+        "environment",
+        "renewable"
+      ]
+    },
+    {
+      "file": "07-analytics.svg",
+      "name": "Analytics",
+      "keywords": [
+        "data",
+        "performance",
+        "reporting"
+      ]
+    },
+    {
+      "file": "08-facility.svg",
+      "name": "Facility",
+      "keywords": [
+        "site",
+        "facility",
+        "industrial"
+      ]
+    },
+    {
+      "file": "09-maintenance.svg",
+      "name": "Maintenance",
+      "keywords": [
+        "service",
+        "repair",
+        "maintenance"
+      ]
+    },
+    {
+      "file": "10-charging.svg",
+      "name": "Charging",
+      "keywords": [
+        "charging",
+        "EV",
+        "station"
+      ]
+    },
+    {
+      "file": "11-monitoring.svg",
+      "name": "Monitoring",
+      "keywords": [
+        "monitoring",
+        "dashboard",
+        "system"
+      ]
+    },
+    {
+      "file": "12-safety.svg",
+      "name": "Safety",
+      "keywords": [
+        "safety",
+        "compliance",
+        "protection"
+      ]
+    }
+  ]
+}
