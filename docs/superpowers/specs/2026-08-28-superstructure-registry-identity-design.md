@@ -1,6 +1,11 @@
 # Superstructure canônica, Powerfarm Identity e Registry vivo
 
-**Status:** proposta aprovada para especificação; implementação ainda não autorizada
+**Status:** substituída
+
+Esta proposta foi substituída por
+[`2026-08-28-integrated-superstructure-passwordless-identity-design.md`](./2026-08-28-integrated-superstructure-passwordless-identity-design.md).
+Ela permanece no histórico para registrar a hipótese anterior de repositórios e
+hosts separados, mas não deve orientar implementação.
 
 **Data:** 2026-08-28
 
