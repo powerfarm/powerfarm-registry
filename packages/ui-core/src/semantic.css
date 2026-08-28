@@ -1,0 +1,55 @@
+:root,
+.pf-theme-dark {
+  --pf-surface-canvas: var(--pf-powerfarm-black);
+  --pf-surface-panel: var(--pf-graphite);
+  --pf-surface-raised: var(--pf-tint-10);
+  --pf-surface-input: var(--pf-tint-05);
+  --pf-text-primary: var(--pf-powerfarm-cream);
+  --pf-text-secondary: var(--pf-tint-65);
+  --pf-text-inverse: var(--pf-powerfarm-black);
+  --pf-border: var(--pf-tint-25);
+  --pf-border-strong: var(--pf-tint-40);
+  --pf-action-primary-bg: var(--pf-energy-amber);
+  --pf-action-primary-fg: var(--pf-powerfarm-black);
+  --pf-action-secondary-bg: var(--pf-tint-15);
+  --pf-action-secondary-fg: var(--pf-powerfarm-cream);
+  --pf-accent-text: var(--pf-energy-amber);
+  --pf-focus: var(--pf-energy-amber);
+  --pf-signal-critical: var(--pf-powerfarm-cream);
+  --pf-signal-warning: var(--pf-energy-amber);
+  --pf-signal-info: var(--pf-tint-65);
+  --pf-signal-success: var(--pf-powerfarm-cream);
+
+  --pf-control-height-sm: 2.25rem;
+  --pf-control-height-md: 2.75rem;
+  --pf-control-height-lg: 3.25rem;
+  --pf-control-border-width: 1px;
+  --pf-control-radius: 0;
+  --pf-motion-fast: 120ms;
+  --pf-motion-standard: 180ms;
+  --pf-focus-ring-width: 2px;
+  --pf-focus-ring-offset: 2px;
+  --pf-shadow-panel: 0 1rem 3rem color-mix(in srgb, var(--pf-surface-canvas) 45%, transparent);
+}
+
+.pf-theme-light {
+  --pf-surface-canvas: var(--pf-powerfarm-cream);
+  --pf-surface-panel: var(--pf-white);
+  --pf-surface-raised: var(--pf-white);
+  --pf-surface-input: var(--pf-white);
+  --pf-text-primary: var(--pf-powerfarm-black);
+  --pf-text-secondary: var(--pf-steel);
+  --pf-text-inverse: var(--pf-powerfarm-cream);
+  --pf-border: var(--pf-tint-40);
+  --pf-border-strong: var(--pf-steel);
+  --pf-action-primary-bg: var(--pf-powerfarm-black);
+  --pf-action-primary-fg: var(--pf-powerfarm-cream);
+  --pf-action-secondary-bg: var(--pf-white);
+  --pf-action-secondary-fg: var(--pf-powerfarm-black);
+  --pf-accent-text: var(--pf-amber-deep);
+  --pf-focus: var(--pf-amber-deep);
+  --pf-signal-critical: var(--pf-powerfarm-black);
+  --pf-signal-warning: var(--pf-amber-deep);
+  --pf-signal-info: var(--pf-steel);
+  --pf-signal-success: var(--pf-powerfarm-black);
+}

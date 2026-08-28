@@ -1,0 +1,57 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  color-scheme: dark;
+  background: var(--pf-surface-canvas);
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  background: var(--pf-surface-canvas);
+  color: var(--pf-text-primary);
+  font-family: var(--pf-font-text);
+  font-size: var(--pf-type-body);
+  line-height: var(--pf-line-height-body);
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+}
+
+a {
+  color: var(--pf-accent-text);
+}
+
+::selection {
+  background: var(--pf-action-primary-bg);
+  color: var(--pf-action-primary-fg);
+}
+
+:focus-visible {
+  outline: var(--pf-focus-ring-width) solid var(--pf-focus);
+  outline-offset: var(--pf-focus-ring-offset);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --pf-motion-fast: 0ms;
+    --pf-motion-standard: 0ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
