@@ -18,6 +18,9 @@ test("Identity is an independently buildable workspace consuming canonical UI", 
   assert.equal(pkg.name, "@powerfarm/identity-host");
   assert.equal(pkg.dependencies["@powerfarm/identity-ui"], "0.1.0");
   assert.equal(pkg.dependencies["@supabase/supabase-js"], "2.112.4");
+  assert.equal(pkg.devDependencies.typescript, "^5.9.3");
+  assert.equal(pkg.devDependencies["@types/node"], "^22");
+  assert.equal(pkg.devDependencies["@types/react"], "^19");
   assert.match(config, /transpilePackages:\s*\["@powerfarm\/identity-ui"\]/);
   assert.match(layout, /@powerfarm\/identity-ui\/styles\.css/);
   assert.match(rootPkg.scripts["identity:build"], /@powerfarm\/identity-host/);
