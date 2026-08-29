@@ -1,12 +1,17 @@
 const NEUTRAL_LINK_NOTICE =
   "Se o endereço puder continuar, enviaremos as instruções por email.";
 
+export function passkeyCapabilitiesReady(passkeyAvailable) {
+  return typeof passkeyAvailable === "boolean";
+}
+
 export function createIdentityState(options = {}) {
   return {
     screen: "idle",
     intent: "sign-in",
     email: "",
     passkeyAvailable: options.passkeyAvailable ?? false,
+    capabilitiesReady: passkeyCapabilitiesReady(options.passkeyAvailable),
     setupPasskey: options.setupPasskey ?? false,
     notice: null,
     error: null,

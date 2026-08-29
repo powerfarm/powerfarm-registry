@@ -9,6 +9,16 @@ function transition(state, ...events) {
   return events.reduce(reduceIdentityState, state);
 }
 
+test("identity bootstrap waits until passkey capability is resolved", () => {
+  const pending = createIdentityState({ passkeyAvailable: null });
+  const unsupported = createIdentityState({ passkeyAvailable: false });
+  const supported = createIdentityState({ passkeyAvailable: true });
+
+  assert.equal(pending.capabilitiesReady, false);
+  assert.equal(unsupported.capabilitiesReady, true);
+  assert.equal(supported.capabilitiesReady, true);
+});
+
 test("email survives sign-up and passkey fallback transitions", () => {
   const state = transition(
     createIdentityState({ passkeyAvailable: true }),
