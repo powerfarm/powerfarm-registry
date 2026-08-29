@@ -3,9 +3,9 @@
 import { IdentitySurface } from "@powerfarm/identity-ui";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { authorizationRoute } from "@/lib/auth-flow.mjs";
-import { createIdentityAdapter } from "@/lib/identity-adapter.mjs";
-import { getSupabaseBrowserClient } from "@/lib/supabase-browser";
+import { authorizationRoute } from "../lib/auth-flow.mjs";
+import { createIdentityAdapter } from "../lib/identity-adapter.mjs";
+import { getSupabaseBrowserClient } from "../lib/supabase-browser";
 
 type IdentityLoginHostProps = {
   authorizationId?: string;

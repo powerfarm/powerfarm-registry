@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { decideOAuth, type OAuthDecision } from "@/lib/oauth-decision";
-import { getSupabaseServerClient } from "@/lib/supabase-server";
+import { decideOAuth, type OAuthDecision } from "../../../../lib/oauth-decision";
+import { getSupabaseServerClient } from "../../../../lib/supabase-server";
 
 function isDecision(value: FormDataEntryValue | null): value is OAuthDecision {
   return value === "approve" || value === "deny";

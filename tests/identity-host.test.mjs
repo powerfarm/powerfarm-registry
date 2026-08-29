@@ -1,11 +1,8 @@
 import assert from "node:assert/strict";
-import { execFile } from "node:child_process";
 import { readFile } from "node:fs/promises";
-import { promisify } from "node:util";
 import test from "node:test";
 
 const root = new URL("../apps/identity/", import.meta.url);
-const execFileAsync = promisify(execFile);
 
 async function source(path) {
   return readFile(new URL(path, root), "utf8");
@@ -54,13 +51,4 @@ test("Identity refreshes issuer cookies without adding a second access policy", 
   assert.match(middleware, /getClaims\(\)/);
   assert.match(middleware, /response\.cookies\.set/);
   assert.doesNotMatch(middleware, /redirect\(|service_role|SUPABASE_SECRET/);
-});
-
-test("Identity resolves its path alias from the workspace under monorepo builds", async () => {
-  const { stdout } = await execFileAsync("npx", ["tsc", "--showConfig"], {
-    cwd: new URL(".", root),
-  });
-  const resolved = JSON.parse(stdout);
-  assert.equal(resolved.compilerOptions.baseUrl, "./");
-  assert.deepEqual(resolved.compilerOptions.paths["@/*"], ["./*"]);
 });

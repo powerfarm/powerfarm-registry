@@ -1,4 +1,4 @@
-import { IdentityLoginHost } from "@/components/IdentityLoginHost";
+import { IdentityLoginHost } from "../../components/IdentityLoginHost";
 
 type LoginPageProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;

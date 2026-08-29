@@ -1,7 +1,7 @@
 import { ConsentSurface } from "@powerfarm/identity-ui";
 import { redirect } from "next/navigation";
-import { decideOAuth, type OAuthDecision } from "@/lib/oauth-decision";
-import { getSupabaseServerClient } from "@/lib/supabase-server";
+import { decideOAuth, type OAuthDecision } from "../../../lib/oauth-decision";
+import { getSupabaseServerClient } from "../../../lib/supabase-server";
 
 type ConsentPageProps = {
   searchParams: Promise<{ authorization_id?: string | string[] }>;
