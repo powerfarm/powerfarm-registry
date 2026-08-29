@@ -1,0 +1,68 @@
+{
+  "brand": "POWERFARM",
+  "system": "Applications",
+  "version": "0.5.1",
+  "applications": [
+    {
+      "file": "01-business-card-front-back.svg",
+      "type": "business card",
+      "status": "template"
+    },
+    {
+      "file": "02-email-signature-spec.svg",
+      "type": "email signature",
+      "status": "template"
+    },
+    {
+      "file": "03-social-campaign-pair.svg",
+      "type": "social media",
+      "status": "template"
+    },
+    {
+      "file": "04-presentation-application.svg",
+      "type": "presentation",
+      "status": "template"
+    },
+    {
+      "file": "05-report-cover.svg",
+      "type": "report",
+      "status": "template"
+    },
+    {
+      "file": "06-website-landing-hero.svg",
+      "type": "website",
+      "status": "template"
+    },
+    {
+      "file": "07-facility-signage.svg",
+      "type": "signage",
+      "status": "template"
+    },
+    {
+      "file": "08-vehicle-side-graphic.svg",
+      "type": "vehicle graphics",
+      "status": "proportional guide"
+    },
+    {
+      "file": "09-apparel-application.svg",
+      "type": "apparel",
+      "status": "template"
+    },
+    {
+      "file": "10-equipment-label.svg",
+      "type": "equipment labeling",
+      "status": "template"
+    }
+  ],
+  "production_rule": "Templates show the geometric symbol master, generated from logo/geometria.py by logo/gerar.py. Symbol groups are marked with data-pf-symbol and data-pf-box; the generator rewrites their contents on every run, so never hand-edit the symbol inside a template. For trademark-critical production the open item is provenance, not drawing quality — see logo/SOURCE-STATUS.md.",
+  "shared_rules": [
+    "Use the approved logo master. Do not redraw or approximate it.",
+    "Use POWERFARM Black and Cream as the dominant pair.",
+    "Use Energy Amber only for emphasis and wayfinding.",
+    "Maintain the established typography hierarchy.",
+    "Keep one dominant message per application surface.",
+    "Follow the layout grid instead of free-positioning elements.",
+    "Use real or approved POWERFARM imagery.",
+    "Respect substrate, print, fabrication, accessibility, and regulatory constraints."
+  ]
+}

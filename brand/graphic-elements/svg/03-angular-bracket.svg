@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" color="#F8DFC1" width="1000" height="1000" viewBox="0 0 1000 1000">
+  <path d="M470 120 H270 L95 500 270 880 H470"
+    fill="none" stroke="currentColor" stroke-width="70" stroke-linejoin="bevel"/>
+  <path d="M530 120 H730 L905 500 730 880 H530"
+    fill="none" stroke="currentColor" stroke-width="70" stroke-linejoin="bevel"/>
+</svg>

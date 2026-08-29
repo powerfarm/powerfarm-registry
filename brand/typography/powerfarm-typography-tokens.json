@@ -1,0 +1,54 @@
+{
+  "brand": "POWERFARM",
+  "version": "0.5.1",
+  "families": {
+    "display": {
+      "primary": "Anton",
+      "fallback": [
+        "Arial Narrow",
+        "Impact",
+        "sans-serif"
+      ]
+    },
+    "text": {
+      "primary": "Inter",
+      "fallback": [
+        "Arial",
+        "Helvetica",
+        "sans-serif"
+      ]
+    }
+  },
+  "scale_px": {
+    "display_2xl": 96,
+    "display_xl": 72,
+    "display_lg": 56,
+    "h1": 40,
+    "h2": 32,
+    "h3": 24,
+    "body_lg": 18,
+    "body": 16,
+    "body_sm": 14,
+    "caption": 12,
+    "label": 11
+  },
+  "line_height": {
+    "display": 0.92,
+    "heading": 1.0,
+    "body": 1.5,
+    "caption": 1.35
+  },
+  "tracking": {
+    "display_tight": "-0.02em",
+    "label": "0.08em",
+    "body": "0em"
+  },
+  "rules": [
+    "Use Anton for short high-impact display copy only.",
+    "Use Inter for body copy, UI, technical information, captions, and documents.",
+    "Prefer uppercase for major display lines and labels.",
+    "Prefer sentence case for body copy.",
+    "Do not stretch, skew, outline, or artificially condense type.",
+    "Do not add extra font families without a functional reason."
+  ]
+}

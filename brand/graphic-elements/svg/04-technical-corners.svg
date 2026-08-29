@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" color="#F8DFC1" width="1000" height="1000" viewBox="0 0 1000 1000">
+  <path d="M90 340 V90 H340" fill="none" stroke="currentColor" stroke-width="28"/>
+  <path d="M660 90 H910 V340" fill="none" stroke="currentColor" stroke-width="28"/>
+  <path d="M910 660 V910 H660" fill="none" stroke="#FFB02E" stroke-width="28"/>
+  <path d="M340 910 H90 V660" fill="none" stroke="currentColor" stroke-width="28"/>
+  <circle cx="90" cy="90" r="12" fill="#FFB02E"/>
+  <circle cx="910" cy="910" r="12" fill="#FFB02E"/>
+</svg>

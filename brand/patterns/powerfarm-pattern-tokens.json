@@ -1,0 +1,90 @@
+{
+  "brand": "POWERFARM",
+  "system": "Pattern System",
+  "version": "0.5.1",
+  "palette": {
+    "black": "#080702",
+    "cream": "#F8DFC1",
+    "amber": "#FFB02E",
+    "graphite": "#1A1A1A",
+    "steel": "#4D4D4D",
+    "white": "#FFFFFF"
+  },
+  "patterns": [
+    {
+      "file": "01-micro-chevrons.svg",
+      "name": "Micro Chevrons",
+      "default_scale": "24–48 px motif",
+      "recommended_opacity": "15–35%",
+      "use": [
+        "UI backgrounds",
+        "labels",
+        "small panels"
+      ]
+    },
+    {
+      "file": "02-energy-slash-field.svg",
+      "name": "Energy Slash Field",
+      "default_scale": "80–180 px tile",
+      "recommended_opacity": "10–25%",
+      "use": [
+        "hero crops",
+        "packaging",
+        "environmental graphics"
+      ]
+    },
+    {
+      "file": "03-technical-grid.svg",
+      "name": "Technical Grid",
+      "default_scale": "100–240 px tile",
+      "recommended_opacity": "10–30%",
+      "use": [
+        "technical pages",
+        "spec sheets",
+        "presentation backgrounds"
+      ]
+    },
+    {
+      "file": "04-data-dot-field.svg",
+      "name": "Data Dot Field",
+      "default_scale": "90–180 px tile",
+      "recommended_opacity": "10–30%",
+      "use": [
+        "data sections",
+        "UI",
+        "motion backplates"
+      ]
+    },
+    {
+      "file": "05-energy-flow-topology.svg",
+      "name": "Energy Flow Topology",
+      "default_scale": "240–480 px tile",
+      "recommended_opacity": "10–28%",
+      "use": [
+        "process storytelling",
+        "web bands",
+        "motion"
+      ]
+    },
+    {
+      "file": "06-modular-brackets.svg",
+      "name": "Modular Brackets",
+      "default_scale": "120–260 px tile",
+      "recommended_opacity": "10–25%",
+      "use": [
+        "documents",
+        "presentation sections",
+        "signage"
+      ]
+    }
+  ],
+  "rules": [
+    "Use patterns as atmosphere, not as the primary message.",
+    "Keep the logo on clear space. Do not place dense patterns directly behind the mark.",
+    "Amber should remain a restrained accent inside repeating patterns.",
+    "Prefer low contrast and generous scale for large-format applications.",
+    "Do not combine more than two patterns in one composition.",
+    "Do not distort the tiles. Scale proportionally.",
+    "Patterns are supporting assets and must not imitate the official logo."
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "brand": "POWERFARM",
+  "system": "Graphic Elements",
+  "version": "0.5.1",
+  "colors": {
+    "black": "#080702",
+    "cream": "#F8DFC1",
+    "amber": "#FFB02E",
+    "graphite": "#1A1A1A",
+    "steel": "#4D4D4D",
+    "white": "#FFFFFF"
+  },
+  "principles": {
+    "geometry": [
+      "angular",
+      "diagonal",
+      "modular",
+      "technical"
+    ],
+    "stroke_behavior": "square or bevel joins preferred; avoid soft decorative curves",
+    "density": "one dominant graphic idea per composition",
+    "accent_rule": "amber is an accent, not the dominant field color",
+    "logo_rule": "supporting graphics must never imitate or replace the official logo"
+  },
+  "assets": [
+    {
+      "file": "01-energy-bolt.svg",
+      "role": "supporting energy motif"
+    },
+    {
+      "file": "02-double-slash.svg",
+      "role": "divider / crop / directional accent"
+    },
+    {
+      "file": "03-angular-bracket.svg",
+      "role": "framing / container"
+    },
+    {
+      "file": "04-technical-corners.svg",
+      "role": "technical framing"
+    },
+    {
+      "file": "05-energy-flow.svg",
+      "role": "process / flow storytelling"
+    },
+    {
+      "file": "06-dot-matrix.svg",
+      "role": "texture / data field"
+    },
+    {
+      "file": "07-technical-grid.svg",
+      "role": "technical backdrop"
+    },
+    {
+      "file": "08-directional-chevrons.svg",
+      "role": "navigation / momentum"
+    },
+    {
+      "file": "09-energy-bars.svg",
+      "role": "signal / performance"
+    },
+    {
+      "file": "10-diagonal-field.svg",
+      "role": "large crop / section transition"
+    }
+  ]
+}

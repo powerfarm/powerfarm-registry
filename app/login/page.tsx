@@ -1,40 +1,12 @@
-"use client";
-import { PowerFarmLogin } from "@/ui/auth/PowerFarmLogin";
-import { supabaseBrowser } from "@/lib/supabase-browser";
-import { PUBLIC_BASE_URL, callbackUrl } from "@/lib/base-url";
+import { normalizeInternalPath } from "@/lib/oauth-client-flow.mjs";
+import { redirect } from "next/navigation";
 
-// O Registry e apenas o primeiro consumidor do bloco canonico. Ele traz o
-// fluxo real — Supabase — e o SEU proprio destino de volta. Outro app amanha
-// usa o mesmo componente e traz o dele.
-export default function Login() {
-  const ctx = {
-    produto: "Registry da PowerFarm",
-    emissor: new URL(process.env.NEXT_PUBLIC_SUPABASE_URL!).host,
-    destino: callbackUrl(),
-
-    entrarComSenha: async (email: string, senha: string) => {
-      const { error } = await supabaseBrowser().auth
-        .signInWithPassword({ email, password: senha });
-      return error ? { erro: error.message } : {};
-    },
-
-    pedirLink: async (email: string) => {
-      const { error } = await supabaseBrowser().auth.signInWithOtp({
-        email,
-        // O destino e do consumidor e esta na allowlist do emissor.
-        options: { emailRedirectTo: callbackUrl() },
-      });
-      return error ? { erro: error.message } : {};
-    },
-
-    // O consent chega ca com ?redirect=/oauth/consent?... — depois de entrar,
-    // volta-se la. So caminhos internos: um destino absoluto seria open redirect.
-    aoEntrar: () => {
-      const pedido = new URLSearchParams(window.location.search).get("redirect");
-      const destino = pedido?.startsWith("/") && !pedido.startsWith("//") ? pedido : "/";
-      window.location.href = PUBLIC_BASE_URL + destino;
-    },
-  };
-
-  return <PowerFarmLogin ctx={ctx} />;
+export default async function Login({
+  searchParams,
+}: {
+  searchParams: Promise<{ next?: string; redirect?: string }>;
+}) {
+  const query = await searchParams;
+  const next = normalizeInternalPath(query.next ?? query.redirect ?? "/account");
+  redirect(`/auth/start?next=${encodeURIComponent(next)}`);
 }
