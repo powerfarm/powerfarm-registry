@@ -1,6 +1,7 @@
 "use client";
 
 import { IdentitySurface } from "@powerfarm/identity-ui";
+import { passkeyCapabilitiesReady } from "@powerfarm/identity-ui/machine";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { authorizationRoute } from "../lib/auth-flow.mjs";
@@ -15,7 +16,7 @@ type IdentityLoginHostProps = {
 
 export function IdentityLoginHost({ authorizationId, setupPasskey, result }: IdentityLoginHostProps) {
   const router = useRouter();
-  const [passkeyAvailable, setPasskeyAvailable] = useState(false);
+  const [passkeyAvailable, setPasskeyAvailable] = useState<boolean | null>(null);
   useEffect(() => {
     setPasskeyAvailable(
       "PublicKeyCredential" in window && Boolean(window.navigator.credentials),
@@ -30,7 +31,7 @@ export function IdentityLoginHost({ authorizationId, setupPasskey, result }: Ide
       client,
       callbackUrl: process.env.NEXT_PUBLIC_IDENTITY_BASE_URL!,
       authorizationId,
-      passkeyAvailable,
+      passkeyAvailable: passkeyAvailable ?? false,
     });
   }, [authorizationId, passkeyAvailable]);
 
@@ -46,6 +47,12 @@ export function IdentityLoginHost({ authorizationId, setupPasskey, result }: Ide
           <p className="pf-identity-intro">Você já pode fechar esta janela ou voltar ao aplicativo.</p>
         </section>
       </main>
+    );
+  }
+
+  if (!passkeyCapabilitiesReady(passkeyAvailable)) {
+    return (
+      <main className="pf-identity-stage" aria-busy="true" aria-label="Preparando identidade" />
     );
   }
 
