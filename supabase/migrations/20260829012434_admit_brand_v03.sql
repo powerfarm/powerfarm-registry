@@ -3,7 +3,7 @@
 -- Nao e a migration 03 de blobs. Essa continua adiada: estes bytes vivem
 -- no pacote de marca e no ficheiro do kit. O registry so declara.
 --
--- Versao 20260828170000: 0004 ja pertence a adk_runtime no banco vivo.
+-- Versao 20260829012434: 0004 ja pertence a adk_runtime no banco vivo.
 -- Esta migration ainda nao foi aplicada e por isso avanca sem reescrever historia.
 --
 -- Versao nova nao apaga a anterior. 0.2 passa a retained.

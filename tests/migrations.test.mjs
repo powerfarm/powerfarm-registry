@@ -13,8 +13,29 @@ test("migration source contains authority, one ADK table migration, and its advi
     "0004_adk_runtime.sql",
     "0005_adk_runtime_advisors.sql",
     "20260820192536_gadget_lineage.sql",
-    "20260828170000_admit_brand_v03.sql",
+    "20260829012434_admit_brand_v03.sql",
+    "20260829012439_registry_identity_authority.sql",
   ]);
+});
+
+test("Registry authority migration makes OAuth administration grant-bound", async () => {
+  const sql = (await readFile(new URL("20260829012439_registry_identity_authority.sql", migrationsUrl), "utf8"))
+    .replaceAll(/--.*$/gm, "")
+    .toLowerCase();
+
+  assert.match(sql, /create or replace function public\.has_registry_grant\(p_action text\)/);
+  assert.match(sql, /set search_path = ''/);
+  assert.match(sql, /revoke all on function public\.has_registry_grant\(text\) from public/);
+  assert.match(sql, /grant execute on function public\.has_registry_grant\(text\) to authenticated/);
+  assert.match(sql, /create table public\.app_oauth_clients/);
+  assert.match(sql, /oauth_client_id\s+uuid\s+not null unique/);
+  assert.match(sql, /alter table public\.app_oauth_clients enable row level security/);
+  assert.match(sql, /revoke all on public\.app_oauth_clients from anon/);
+  assert.match(sql, /revoke all on public\.app_oauth_clients from public/);
+  assert.match(sql, /has_registry_grant\('oauth\.clients\.manage'/);
+  assert.match(sql, /has_registry_grant\('registry\.admin'/);
+  assert.doesNotMatch(sql, /client_secret/);
+  assert.doesNotMatch(sql, /service_role/);
 });
 
 test("Gadget lineage migration resolves an exact authorized execution snapshot", async () => {

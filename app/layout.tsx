@@ -17,7 +17,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <a href="/chaves">Chaves</a>
             <a href="/store">Store</a>
             <a href="/gadgets/hello-agentic">Gadget</a>
-            <a href="/clientes">Clientes OAuth</a>
+            <a href="/account">Conta</a>
+            <a href="/admin">Admin</a>
           </nav>
         </header>
         <main>{children}</main>
