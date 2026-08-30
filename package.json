@@ -17,7 +17,10 @@
     "build": "next build",
     "start": "next start",
     "migrations:check": "node scripts/check-migration-parity.mjs",
-    "test": "node --test tests/*.test.mjs && npm run migrations:check && npm run brand:check"
+    "test": "node --test tests/*.test.mjs && npm run migrations:check && npm run brand:check",
+    "docs:normalize": "node scripts/docs-normalize.mjs",
+    "docs:check": "node scripts/docs-conformance.mjs",
+    "github:check": "node scripts/check-github-package.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "0.12.5",

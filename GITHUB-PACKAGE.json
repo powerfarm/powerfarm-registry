@@ -1,0 +1,12 @@
+{
+  "format": "powerfarm.github-package/v1",
+  "repository": "powerfarm-registry",
+  "prepared_from": "Milestone 6 / Production Directory",
+  "paired_repository": "powerfarm-superbundle",
+  "paired_superbundle_version": "0.12.0",
+  "owns": ["Identity", "Office/Occupancy", "Keys", "Brand", "Store/Gadgets", "Manifest", "Artifact lineage"],
+  "does_not_own": ["Institutional Authority", "RunGrants", "Process admission", "Cards", "Heartime circulation", "Institutional consequence"],
+  "github_distribution_binary_font_assets": "omitted",
+  "ci": ".github/workflows/quality.yml",
+  "copyright": "Copyright © 2026 PowerFarm. All rights reserved."
+}

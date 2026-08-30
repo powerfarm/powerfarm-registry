@@ -1,0 +1,16 @@
+name = "powerfarm-registry-runtime"
+main = "src/index.js"
+compatibility_date = "2026-08-30"
+
+[vars]
+SUPABASE_URL = "https://PROJECT.supabase.co"
+SUPABASE_PUBLISHABLE_KEY = "sb_publishable_..."
+SUPABASE_AUTH_AUDIENCE = "authenticated"
+SUPABASE_JWT_ISSUER = "supabase"
+RUNTIME_TOKEN_CALLERS = "pf.runtime.heartime,pf.runtime.process-writer"
+RUNTIME_TOKEN_TTL_SECONDS = "180"
+
+# Configure exactly one signing mechanism as a Worker secret:
+#   SUPABASE_JWT_SECRET           legacy/custom HS256 JWT secret
+#   SUPABASE_JWT_SIGNING_JWK      private P-256 JWK for ES256
+# Never commit either secret.

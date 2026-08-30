@@ -41,8 +41,8 @@ test("legacy Registry consent forwards only the opaque request to canonical Iden
 test("OAuth client administration is gated twice and records only the provider reference", async () => {
   const route = await source("app/api/oauth/clients/route.ts");
 
-  assert.match(route, /requireRegistryGrant/);
-  assert.match(route, /oauth\.clients\.manage/);
+  assert.match(route, /requireRegistryControlRole/);
+  assert.match(route, /oauth_admin/);
   assert.match(route, /normalizeOAuthClientInput/);
   assert.match(route, /auth\.admin\.oauth\.createClient/);
   assert.match(route, /app_oauth_clients/);
@@ -54,6 +54,6 @@ test("account and admin are separate authenticated projections", async () => {
   const admin = await source("app/admin/page.tsx");
 
   assert.match(account, /currentRegistryPrincipal/);
-  assert.match(admin, /requireRegistryGrant/);
-  assert.match(admin, /registry\.admin/);
+  assert.match(admin, /requireRegistryControlRole/);
+  assert.match(admin, /admin/);
 });

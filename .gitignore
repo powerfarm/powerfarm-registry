@@ -1,9 +1,13 @@
-node_modules
-.next
-.vercel
+node_modules/
+.next/
+.vercel/
 .env
 .env.local
 .env*.local
-supabase/.temp
+!.env.example
+supabase/.temp/
 *.tsbuildinfo
+brand/.generated/
+coverage/
+*.log
 .DS_Store

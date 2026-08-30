@@ -4,105 +4,73 @@ import test from "node:test";
 
 const migrationsUrl = new URL("../supabase/migrations/", import.meta.url);
 
-test("migration source contains authority, one ADK table migration, and its advisor follow-up", async () => {
+async function allActiveSql() {
   const files = (await readdir(migrationsUrl)).filter((name) => name.endsWith(".sql")).sort();
+  const texts = await Promise.all(files.map(async (file) => [file, (await readFile(new URL(file, migrationsUrl), "utf8")).toLowerCase()]));
+  return { files, text: texts.map(([, value]) => value).join("\n") };
+}
+
+test("standalone Registry migration stream contains identity, manifest, store, brand and local control plane", async () => {
+  const { files } = await allActiveSql();
   assert.deepEqual(files, [
     "0001_identity.sql",
     "0002_manifest.sql",
-    "0003_autoridade.sql",
-    "0004_adk_runtime.sql",
-    "0005_adk_runtime_advisors.sql",
-    "20260820192536_gadget_lineage.sql",
+    "0003_registry_identity_helpers.sql",
+    "20260820192536_gadget_store_lineage.sql",
     "20260829012434_admit_brand_v03.sql",
-    "20260829012439_registry_identity_authority.sql",
+    "20260829012439_registry_control_plane.sql",
+    "20260830011500_registry_identity_hardening.sql",
+    "20260830070000_registry_production_directory.sql",
   ]);
 });
 
-test("Registry authority migration makes OAuth administration grant-bound", async () => {
-  const sql = (await readFile(new URL("20260829012439_registry_identity_authority.sql", migrationsUrl), "utf8"))
-    .replaceAll(/--.*$/gm, "")
-    .toLowerCase();
-
-  assert.match(sql, /create or replace function public\.has_registry_grant\(p_action text\)/);
-  assert.match(sql, /set search_path = ''/);
-  assert.match(sql, /revoke all on function public\.has_registry_grant\(text\) from public/);
-  assert.match(sql, /grant execute on function public\.has_registry_grant\(text\) to authenticated/);
-  assert.match(sql, /create table public\.app_oauth_clients/);
-  assert.match(sql, /oauth_client_id\s+uuid\s+not null unique/);
-  assert.match(sql, /alter table public\.app_oauth_clients enable row level security/);
-  assert.match(sql, /revoke all on public\.app_oauth_clients from anon/);
-  assert.match(sql, /revoke all on public\.app_oauth_clients from public/);
-  assert.match(sql, /has_registry_grant\('oauth\.clients\.manage'/);
-  assert.match(sql, /has_registry_grant\('registry\.admin'/);
-  assert.doesNotMatch(sql, /client_secret/);
-  assert.doesNotMatch(sql, /service_role/);
+test("institutional Authority and ADK runtime are absent from active Registry migrations", async () => {
+  const { text } = await allActiveSql();
+  for (const forbidden of [
+    /create table public\.grants\b/,
+    /create table public\.runs\b/,
+    /create table public\.approvals\b/,
+    /create table public\.run_grants\b/,
+    /create schema if not exists adk/,
+    /powerfarm_issue_run_grant/,
+    /powerfarm_execution_envelope/,
+    /powerfarm_run_create_envelope/,
+    /has_registry_grant/,
+  ]) assert.doesNotMatch(text, forbidden);
 });
 
-test("Gadget lineage migration resolves an exact authorized execution snapshot", async () => {
-  const files = (await readdir(migrationsUrl)).filter((name) => name.endsWith("_gadget_lineage.sql"));
-  assert.equal(files.length, 1);
-  const sql = (await readFile(new URL(files[0], migrationsUrl), "utf8"))
-    .replaceAll(/--.*$/gm, "")
-    .toLowerCase();
-
-  for (const table of ["workspaces", "workspace_members", "gadgets", "gadget_drafts",
-    "gadget_revisions", "gadget_installations", "run_grants"]) {
+test("Store lineage preserves exact immutable Gadget revisions without minting authority", async () => {
+  const sql = (await readFile(new URL("20260820192536_gadget_store_lineage.sql", migrationsUrl), "utf8")).toLowerCase();
+  for (const table of ["workspaces", "workspace_members", "gadgets", "gadget_drafts", "gadget_revisions", "gadget_installations"]) {
     assert.match(sql, new RegExp(`create table public\\.${table}\\b`));
     assert.match(sql, new RegExp(`alter table public\\.${table} enable row level security`));
   }
-
   assert.match(sql, /unique\s*\(gadget_id, revision\)/);
   assert.match(sql, /unique\s*\(gadget_id, content_hash\)/);
-  assert.match(sql, /check \(content_hash ~ '\^\[0-9a-f\]\{64\}\$'\)/);
-  assert.match(sql, /create or replace function public\.powerfarm_gadget_apply_patch/);
-  assert.match(sql, /revision_conflict/);
-  assert.match(sql, /create or replace function public\.powerfarm_gadget_publish/);
-  assert.match(sql, /create or replace function public\.powerfarm_resolve_execution/);
-  assert.match(sql, /create or replace function public\.powerfarm_issue_run_grant/);
-  assert.match(sql, /create or replace function public\.powerfarm_execution_envelope/);
-  assert.match(sql, /create or replace function public\.powerfarm_resume_envelope/);
+  assert.match(sql, /powerfarm_gadget_apply_patch/);
+  assert.match(sql, /powerfarm_gadget_publish/);
+  assert.match(sql, /powerfarm_resolve_capability/);
   assert.match(sql, /gadget_revision_hash/);
   assert.match(sql, /gadget_definition_hash/);
-  assert.match(sql, /allowed_capabilities/);
-  assert.match(sql, /authority_version/);
-  assert.match(sql, /idempotency_key/);
-  assert.match(sql, /drop policy if exists runs_leitura on public\.runs/);
-  assert.match(sql, /created_by = public\.identidade_atual\(\)/);
-  assert.match(sql, /revoke insert, update, delete on public\.runs from authenticated/);
-  assert.equal((sql.match(/extensions\.digest\(/g) ?? []).length, 2);
-  assert.doesNotMatch(sql, /service_role|refresh_token|access_token/);
+  assert.doesNotMatch(sql, /run_grants|authority_version|run_create|execution_envelope/);
 });
 
-test("ADK advisor follow-up changes no table topology", async () => {
-  const sql = (await readFile(new URL("0005_adk_runtime_advisors.sql", migrationsUrl), "utf8"))
-    .replaceAll(/--.*$/gm, "")
-    .toLowerCase();
-  assert.match(sql, /alter function public\.identidade_atual\(\) security invoker/);
-  assert.match(sql, /create index adk_sessions_user/);
-  assert.doesNotMatch(sql, /create table|alter table|drop table/);
+test("Registry administration uses a local control-plane ACL, not institutional grants", async () => {
+  const sql = (await readFile(new URL("20260829012439_registry_control_plane.sql", migrationsUrl), "utf8")).toLowerCase();
+  assert.match(sql, /create table public\.registry_control_memberships/);
+  assert.match(sql, /has_registry_control_role/);
+  assert.match(sql, /create table public\.app_oauth_clients/);
+  assert.doesNotMatch(sql, /create table public\.grants|authority\.grant|run_grant/);
+  assert.doesNotMatch(sql, /client_secret|service_role/);
 });
 
-test("ADK runtime migration keeps durable state together and behind RLS", async () => {
-  const sql = (await readFile(new URL("0004_adk_runtime.sql", migrationsUrl), "utf8"))
-    .replaceAll(/--.*$/gm, "")
-    .toLowerCase();
 
-  assert.match(sql, /create schema if not exists adk/);
-  for (const table of ["sessions", "events", "checkpoints", "effects"]) {
-    assert.match(sql, new RegExp(`create table adk\\.${table}\\b`));
-    assert.match(sql, new RegExp(`alter table adk\\.${table} enable row level security`));
-  }
-
-  assert.match(sql, /alter table public\.runs/);
-  assert.match(sql, /'waiting_input'/);
-  assert.match(sql, /'completed'/);
-  assert.match(sql, /create or replace function public\.powerfarm_session_append_event/);
-  assert.match(sql, /create or replace function public\.powerfarm_effect_claim/);
-  assert.match(sql, /create or replace function public\.powerfarm_run_transition/);
-  assert.match(sql, /revoke all on schema adk from public/);
-  assert.match(sql, /revoke execute on function public\.powerfarm_session_create[\s\S]*from public/);
-  assert.match(sql, /idempotency key is required/);
-  assert.match(sql, /invalid run transition/);
-  assert.match(sql, /v_inserted/);
-  assert.doesNotMatch(sql, /service_role/);
+test("Identity writes are control-plane only and active occupancy is singular", async () => {
+  const sql = (await readFile(new URL("20260830011500_registry_identity_hardening.sql", migrationsUrl), "utf8")).toLowerCase();
+  assert.match(sql, /drop policy if exists identity_links_propria/);
+  assert.match(sql, /identity_links_control_insert/);
+  assert.match(sql, /has_registry_control_role\('admin'\)/);
+  assert.match(sql, /unique index if not exists occupancies_one_active_per_identity/);
+  assert.match(sql, /where valid_until is null/);
+  assert.doesNotMatch(sql, /with check \(public\.eh_membro\(\)\)/);
 });

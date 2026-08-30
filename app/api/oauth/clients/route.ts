@@ -1,7 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import { NextResponse } from "next/server";
 import { normalizeOAuthClientInput } from "@/lib/oauth-admin.mjs";
-import { requireRegistryGrant } from "@/lib/registry-authority";
+import { requireRegistryControlRole } from "@/lib/registry-admin";
 import { supabaseServer } from "@/lib/supabase-server";
 
 function providerAdmin() {
@@ -11,13 +11,13 @@ function providerAdmin() {
 }
 
 async function authorized() {
-  return await requireRegistryGrant("oauth.clients.manage")
-    ?? await requireRegistryGrant("registry.admin");
+  return await requireRegistryControlRole("oauth_admin")
+    ?? await requireRegistryControlRole("admin");
 }
 
 export async function GET() {
   if (!await authorized()) {
-    return NextResponse.json({ error: "mandato oauth.clients.manage necessário" }, { status: 403 });
+    return NextResponse.json({ error: "acesso administrativo do Registry necessário" }, { status: 403 });
   }
   const [{ data: providerData, error: providerError }, { data: links, error: linkError }] = await Promise.all([
     providerAdmin().auth.admin.oauth.listClients(),
@@ -39,7 +39,7 @@ export async function GET() {
 export async function POST(request: Request) {
   const principal = await authorized();
   if (!principal) {
-    return NextResponse.json({ error: "mandato oauth.clients.manage necessário" }, { status: 403 });
+    return NextResponse.json({ error: "acesso administrativo do Registry necessário" }, { status: 403 });
   }
   let input;
   try {
