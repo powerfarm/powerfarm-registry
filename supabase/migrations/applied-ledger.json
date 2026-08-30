@@ -1,47 +1,55 @@
 {
-  "project": "powerfarm-registry",
-  "profile": "standalone-identity-brand-store",
+  "project": "powerfarm",
   "observedAt": "2026-08-30",
+  "note": "Applied state of the live powerfarm project. Migrations extracted to history remain applied there; only their text moved.",
   "entries": [
     {
       "version": "0001",
       "name": "identity",
-      "source": "0001_identity.sql"
+      "source": "0001_identity.sql",
+      "location": "migrations"
     },
     {
       "version": "0002",
       "name": "manifest",
-      "source": "0002_manifest.sql"
+      "source": "0002_manifest.sql",
+      "location": "migrations"
     },
     {
       "version": "0003",
-      "name": "registry_identity_helpers",
-      "source": "0003_registry_identity_helpers.sql"
+      "name": "autoridade",
+      "source": "0003_autoridade.sql",
+      "location": "history/process-extracted-2026-08-30"
+    },
+    {
+      "version": "0004",
+      "name": "adk_runtime",
+      "source": "0004_adk_runtime.sql",
+      "location": "history/process-extracted-2026-08-30"
+    },
+    {
+      "version": "0005",
+      "name": "adk_runtime_advisors",
+      "source": "0005_adk_runtime_advisors.sql",
+      "location": "history/process-extracted-2026-08-30"
     },
     {
       "version": "20260820192536",
-      "name": "gadget_store_lineage",
-      "source": "20260820192536_gadget_store_lineage.sql"
+      "name": "gadget_lineage",
+      "source": "20260820192536_gadget_lineage.sql",
+      "location": "history/process-extracted-2026-08-30"
     },
     {
       "version": "20260829012434",
       "name": "admit_brand_v03",
-      "source": "20260829012434_admit_brand_v03.sql"
+      "source": "20260829012434_admit_brand_v03.sql",
+      "location": "migrations"
     },
     {
       "version": "20260829012439",
-      "name": "registry_control_plane",
-      "source": "20260829012439_registry_control_plane.sql"
-    },
-    {
-      "version": "20260830011500",
-      "name": "registry_identity_hardening",
-      "source": "20260830011500_registry_identity_hardening.sql"
-    },
-    {
-      "version": "20260830070000",
-      "name": "registry_production_directory",
-      "source": "20260830070000_registry_production_directory.sql"
+      "name": "registry_identity_authority",
+      "source": "20260829012439_registry_identity_authority.sql",
+      "location": "history/process-extracted-2026-08-30"
     }
   ]
 }

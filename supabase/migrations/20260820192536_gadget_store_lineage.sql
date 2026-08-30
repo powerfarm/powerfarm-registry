@@ -1,5 +1,12 @@
 -- PowerFarm Registry -- Store/Gadget lineage.
 --
+-- Version note. On the live powerfarm project version 20260820192536 is already
+-- applied as 20260820192536_gadget_lineage, so this file is skipped there. That
+-- is safe: the Store tables it creates already exist on that database from the
+-- earlier migration. This file is the fresh-install shape, without the
+-- Process-owned execution grants that the original carried. The number cannot move,
+-- because the Store must exist before later migrations reference it.
+--
 -- Registry owns durable identity, brand, artifacts and the Store catalog.
 -- Workspace roles below are Registry-local product ACLs. They are NOT
 -- institutional PowerFarm Authority. Grants, runs, admission and consequence

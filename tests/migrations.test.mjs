@@ -18,7 +18,7 @@ test("standalone Registry migration stream contains identity, manifest, store, b
     "0003_registry_identity_helpers.sql",
     "20260820192536_gadget_store_lineage.sql",
     "20260829012434_admit_brand_v03.sql",
-    "20260829012439_registry_control_plane.sql",
+    "20260829130000_registry_control_plane.sql",
     "20260830011500_registry_identity_hardening.sql",
     "20260830070000_registry_production_directory.sql",
   ]);
@@ -56,10 +56,10 @@ test("Store lineage preserves exact immutable Gadget revisions without minting a
 });
 
 test("Registry administration uses a local control-plane ACL, not institutional grants", async () => {
-  const sql = (await readFile(new URL("20260829012439_registry_control_plane.sql", migrationsUrl), "utf8")).toLowerCase();
-  assert.match(sql, /create table public\.registry_control_memberships/);
+  const sql = (await readFile(new URL("20260829130000_registry_control_plane.sql", migrationsUrl), "utf8")).toLowerCase();
+  assert.match(sql, /create table if not exists public\.registry_control_memberships/);
   assert.match(sql, /has_registry_control_role/);
-  assert.match(sql, /create table public\.app_oauth_clients/);
+  assert.match(sql, /create table if not exists public\.app_oauth_clients/);
   assert.doesNotMatch(sql, /create table public\.grants|authority\.grant|run_grant/);
   assert.doesNotMatch(sql, /client_secret|service_role/);
 });
