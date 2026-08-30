@@ -29,11 +29,12 @@ export async function currentRegistryPrincipal(): Promise<RegistryPrincipal | nu
   };
 }
 
-export async function requireRegistryGrant(action: string) {
+/** Registry-local product administration. This is not PowerFarm institutional Authority. */
+export async function requireRegistryControlRole(role: "admin" | "oauth_admin") {
   const principal = await currentRegistryPrincipal();
   if (!principal) return null;
   const supabase = await supabaseServer();
-  const { data: allowed, error } = await supabase.rpc("has_registry_grant", { p_action: action });
+  const { data: allowed, error } = await supabase.rpc("has_registry_control_role", { p_role: role });
   if (error || !allowed) return null;
   return principal;
 }

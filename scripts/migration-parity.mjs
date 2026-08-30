@@ -12,7 +12,7 @@ export function migrationVersion(file) {
   return /^(\d+)_.*\.sql$/.exec(file)?.[1] ?? null;
 }
 
-export function checkMigrationParity({ ledger, localFiles }) {
+export function checkMigrationParity({ ledger, localFiles, extraFiles = {} }) {
   const errors = [];
   const sqlFiles = localFiles.filter((file) => migrationVersion(file)).sort();
   const localByVersion = new Map();
@@ -29,7 +29,9 @@ export function checkMigrationParity({ ledger, localFiles }) {
     if (files.length > 1) errors.push(`duplicate local version ${version}: ${files.join(", ")}`);
   }
   for (const entry of ledger) {
-    if (!sqlFiles.includes(entry.source)) errors.push(`missing applied source ${entry.source}`);
+    const location = entry.location ?? "migrations";
+    const known = location === "migrations" ? sqlFiles : (extraFiles[location] ?? []);
+    if (!known.includes(entry.source)) errors.push(`missing applied source ${location === "migrations" ? "" : location + "/"}${entry.source}`);
     if (migrationVersion(entry.source) !== entry.version) {
       errors.push(`ledger version ${entry.version} does not match source ${entry.source}`);
     }
@@ -39,7 +41,9 @@ export function checkMigrationParity({ ledger, localFiles }) {
 
   if (errors.length) throw new Error(`migration parity failed:\n- ${errors.join("\n- ")}`);
 
-  const appliedSources = new Set(ledger.map((entry) => entry.source));
+  const appliedSources = new Set(
+    ledger.filter((entry) => (entry.location ?? "migrations") === "migrations").map((entry) => entry.source),
+  );
   return {
     applied: ledger.length,
     local: sqlFiles.length,
